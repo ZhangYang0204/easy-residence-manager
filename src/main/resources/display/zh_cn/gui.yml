@@ -1,0 +1,26 @@
+gui:
+  title:
+    mainOptionPage: "主选项页"
+  button:
+    mainOptionPage:
+      privateChat:
+        #表示按钮的材料,想知道材料名字,请前往https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html查看
+        #如果是AIR代表不显示相关按钮并且无法被点击
+        materialName: "BOOKSHELF"
+
+        #表示按钮的名称
+        displayName: "&b&l&n私聊"
+
+        #表示按钮的描述，lore中可以用的变量，除了{()}括起来的，都可以用在displayName中
+        lore:
+          - "&b&l点击私聊别的玩家"
+
+        #表示数量
+        amount: 1
+
+        #表示标志，想知道可以隐藏哪些，请前往https://hub.spigotmc.org/javadocs/spigot/org/bukkit/inventory/ItemFlag.html
+        itemFlag:
+          - "HIDE_DESTROYS"
+
+        #用哪个模型数据 1.12及以前的版本不支持这个
+        customModelData: [ ]

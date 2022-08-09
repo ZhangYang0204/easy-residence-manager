@@ -1,0 +1,11 @@
+name: EasyResidence
+version: 1.0.0
+main: pers.zhangyang.easyresidence.EasyResidence
+api-version: 1.13
+commands:
+  EasyResidence:
+    aliases: er
+softdepend:
+  - PlaceholderAPI
+  - Vault
+  - PlayerPoints

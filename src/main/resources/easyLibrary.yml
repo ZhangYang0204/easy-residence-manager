@@ -1,0 +1,11 @@
+
+daoPackage:
+  - "pers/zhangyang/easyresidence/dao"
+listenerPackage:
+  - "pers/zhangyang/easyresidence/listener"
+executorPackage:
+  - "pers/zhangyang/easyresidence/executor"
+yamlPackage:
+  - "pers/zhangyang/easyresidence/yaml"
+guiButtonHandlerPackage:
+  - "pers/zhangyang/easyresidence/listener"
