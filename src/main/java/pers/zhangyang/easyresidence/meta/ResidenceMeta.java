@@ -10,14 +10,14 @@ public class ResidenceMeta {
     private String teleportLocation;
 
 
-    private boolean teleportFlag;
-    private boolean moveFlag;
-    private boolean destroyBlockFlag;
-    private boolean placeBlockFlag;
-    private boolean useContainerFlag;
-    private boolean pvpFlag;
-    private boolean killAnimalFlag;
-    private boolean killMobFlag;
+    private boolean teleportFlagStats;
+    private boolean moveFlagStats;
+    private boolean destroyBlockFlagStats;
+    private boolean placeBlockFlagStats;
+    private boolean useContainerFlagStats;
+    private boolean pvpFlagStats;
+    private boolean killAnimalFlagStats;
+    private boolean killMobFlagStats;
 
 
     private Double vaultCost;
