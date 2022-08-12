@@ -1,4 +1,4 @@
-package pers.zhangyang.easyresidencemanager.yaml;
+package pers.zhangyang.easyresidencemanage.yaml;
 
 import pers.zhangyang.easylibrary.base.YamlBase;
 

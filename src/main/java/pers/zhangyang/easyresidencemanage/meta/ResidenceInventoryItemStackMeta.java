@@ -1,4 +1,4 @@
-package pers.zhangyang.easyresidencemanager.meta;
+package pers.zhangyang.easyresidencemanage.meta;
 
 public class ResidenceInventoryItemStackMeta { private String data;
     private String residenceUuid;

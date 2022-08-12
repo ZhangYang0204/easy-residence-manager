@@ -1,9 +1,0 @@
-completer:
-
-  #当输入了/easyResidence后将提示补全以下内容
-  easyResidence:
-    - "help"
-    - "reloadPlugin"
-    - "correctYaml"
-    - "openGui"
-    - "openMui"

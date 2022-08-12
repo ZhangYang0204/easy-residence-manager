@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pers.zhangyang</groupId>
-    <artifactId>easy-residence-manager</artifactId>
+    <artifactId>easy-residence-manage</artifactId>
     <version>1.0.0</version>
 
     <properties>
