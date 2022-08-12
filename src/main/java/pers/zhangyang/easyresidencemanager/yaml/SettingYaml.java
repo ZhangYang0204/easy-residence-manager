@@ -1,4 +1,4 @@
-package pers.zhangyang.easyresidence.yaml;
+package pers.zhangyang.easyresidencemanager.yaml;
 
 import org.jetbrains.annotations.NotNull;
 import pers.zhangyang.easylibrary.base.YamlBase;

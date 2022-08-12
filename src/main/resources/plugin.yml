@@ -1,10 +1,10 @@
-name: EasyResidence
+name: EasyResidenceManager
 version: 1.0.0
-main: pers.zhangyang.easyresidence.EasyResidence
+main: pers.zhangyang.easyresidencemanager.EasyResidenceManager
 api-version: 1.13
 commands:
-  EasyResidence:
-    aliases: er
+  EasyResidenceManager:
+    aliases: erm
 softdepend:
   - PlaceholderAPI
   - Vault
