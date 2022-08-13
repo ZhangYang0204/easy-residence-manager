@@ -1,11 +1,11 @@
 
 daoPackage:
-  - "pers/zhangyang/easyresidencemanage/dao"
+  - "pers/zhangyang/easyresidencemanager/dao"
 listenerPackage:
-  - "pers/zhangyang/easyresidencemanage/listener"
+  - "pers/zhangyang/easyresidencemanager/listener"
 executorPackage:
-  - "pers/zhangyang/easyresidencemanage/executor"
+  - "pers/zhangyang/easyresidencemanager/executor"
 yamlPackage:
-  - "pers/zhangyang/easyresidencemanage/yaml"
+  - "pers/zhangyang/easyresidencemanager/yaml"
 guiButtonHandlerPackage:
-  - "pers/zhangyang/easyresidencemanage/listener"
+  - "pers/zhangyang/easyresidencemanager/listener"

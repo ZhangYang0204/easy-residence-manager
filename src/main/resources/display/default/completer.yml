@@ -1,7 +1,7 @@
 completer:
 
-  #当输入了/easyResidenceManage后将提示补全以下内容
-  easyResidenceManage:
+  #当输入了/easyResidenceManager后将提示补全以下内容
+  easyResidenceManager:
     - "help"
     - "reloadPlugin"
     - "correctYaml"

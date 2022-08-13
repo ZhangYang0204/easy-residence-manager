@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pers.zhangyang</groupId>
-    <artifactId>easy-residence-manage</artifactId>
+    <artifactId>easy-residence-manager</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -99,11 +99,11 @@
                         <relocation>
                             <pattern>pers.zhangyang.easylibrary</pattern>
                             <!-- 这里替换你自己的包! -->
-                            <shadedPattern>pers.zhangyang.easytalk.other.pers.zhangyang.easylibrary</shadedPattern>
+                            <shadedPattern>pers.zhangyang.easyresidencemanager.other.pers.zhangyang.easylibrary</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>pers.zhangyang.easytalk.other.org.bstats</shadedPattern>
+                            <shadedPattern>pers.zhangyang.easyresidencemanager.other.org.bstats</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

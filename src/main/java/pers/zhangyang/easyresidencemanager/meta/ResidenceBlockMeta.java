@@ -1,4 +1,4 @@
-package pers.zhangyang.easyresidencemanage.meta;
+package pers.zhangyang.easyresidencemanager.meta;
 
 public class ResidenceBlockMeta {
     private String residenceUuid;

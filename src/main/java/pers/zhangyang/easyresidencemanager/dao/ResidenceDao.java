@@ -1,4 +1,4 @@
-package pers.zhangyang.easyresidencemanage.dao;
+package pers.zhangyang.easyresidencemanager.dao;
 
 import pers.zhangyang.easylibrary.base.DaoBase;
 

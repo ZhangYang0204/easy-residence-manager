@@ -1,4 +1,4 @@
-package pers.zhangyang.easyresidencemanage.executor;
+package pers.zhangyang.easyresidencemanager.executor;
 
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
