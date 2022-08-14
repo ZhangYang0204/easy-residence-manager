@@ -75,7 +75,7 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
                     BlockState blockState = block.getState();
                     if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
                         if (blockState instanceof Container) {
-                            ItemStack[] invContentsO = ((BlockInventoryHolder) blockState).getInventory().getContents();
+                            ItemStack[] invContentsO = ((Container) blockState).getInventory().getContents();
                             String[] invContents=new String[invContentsO.length];
                             for (int i=0;i<invContentsO.length;i++){
                                 if (invContentsO[i]==null){
