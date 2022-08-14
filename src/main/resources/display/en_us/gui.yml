@@ -72,7 +72,7 @@ gui:
         materialName: "PAPER"
         displayName: "&b&l&nSelect first coordinate"
         lore:
-          - "&f&l dot me select first coordinate"
+          - "&f&lclick me to select the first coordinate"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"
@@ -111,16 +111,16 @@ gui:
         materialName: "REDSTONE"
         displayName: "&b&l&nReturn"
         lore:
-          - "&c&lclick me to return to previous page"
+          - "&c&lclick me to return to the previous page"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: [ ]
       setupResidence:
         materialName: "DIAMOND_BLOCK"
-        displayName: "&b&l&n Placement Territory"
+        displayName: "&b&l&n placement residential"
         lore:
-          - "&c&l dot me to place the territory out"
+          - "&c&l dot I place the residence out"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"
@@ -129,25 +129,34 @@ gui:
         materialName: "IRON_BLOCK"
         displayName: "&b&l&nCancelSetupResidence"
         lore:
-          - "&c&l dot I cancel the territory from placement, i.e. take it back"
+          - "&c&l dot I cancel the residence from placement, i.e. repossession"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: []
       setResidenceOwner:
         materialName: "BOOKSHELF"
-        displayName: "&b&l&nGiveawayLocation"
+        displayName: "&b&l&nGift Residence"
         lore:
-          - "&c&l dot I give the territory to someone else"
+          - "&c&l point I'm giving the residence to someone else"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: []
       teleportResidence:
         materialName: "IRON_INGOT"
-        displayName: "&b&l&n teleport to territory"
+        displayName: "&b&l&n teleport to residence"
         lore:
-          - "&c&l dot me to territory"
+          - "&c&l dot me to residence"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: []
+      setResidenceName:
+        materialName: "NAME_TAG"
+        displayName: "&b&l&n setResidenceName"
+        lore:
+          - "&c&lclick me to go to residence"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"

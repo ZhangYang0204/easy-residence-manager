@@ -118,36 +118,45 @@ gui:
         customModelData: [ ]
       setupResidence:
        materialName: "DIAMOND_BLOCK"
-       displayName: "&b&l&n安置领地"
+       displayName: "&b&l&n安置住宅"
        lore:
-         - "&c&l点我把领地安置出来"
+         - "&c&l点我把住宅安置出来"
        amount: 1
        itemFlag:
          - "HIDE_DESTROYS"
        customModelData: [ ]
       cancelSetupResidence:
         materialName: "IRON_BLOCK"
-        displayName: "&b&l&n取消安置领地"
+        displayName: "&b&l&n取消安置住宅"
         lore:
-          - "&c&l点我把领地取消安置，即收回"
+          - "&c&l点我把住宅取消安置，即收回"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: []
       setResidenceOwner:
         materialName: "BOOKSHELF"
-        displayName: "&b&l&n赠送领地"
+        displayName: "&b&l&n赠送住宅"
         lore:
-          - "&c&l点我把领地送给别人"
+          - "&c&l点我把住宅送给别人"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: []
       teleportResidence:
         materialName: "IRON_INGOT"
-        displayName: "&b&l&n传送去领地"
+        displayName: "&b&l&n传送去住宅"
         lore:
-          - "&c&l点我前往领地"
+          - "&c&l点我前往住宅"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: []
+      setResidenceName:
+        materialName: "NAME_TAG"
+        displayName: "&b&l&n设置住宅名字"
+        lore:
+          - "&c&l点我前往住宅"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"

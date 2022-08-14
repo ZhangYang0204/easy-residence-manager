@@ -16,6 +16,8 @@ public interface GuiService {
     @Nullable
     ResidenceMeta getResidenceByUuid(String uuid) ;
 
+    void setResidenceName(String residenceUuid,String name) throws NotExistResidenceException, DuplicateResidenceException;
+
     List<ResidenceMeta> listResidence(String ownerUuid);
     List[] setupResidenceAndGetTotal(String uuid) throws NotExistResidenceException, DuplicateSetupResidenceException;
     void cancelSetupResidence(String uuid,List<ResidenceBlockMeta> residenceBlockMetaList,

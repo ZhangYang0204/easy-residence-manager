@@ -52,16 +52,18 @@ public class ManageResidencePageResidenceOptionPage extends SingleGuiPageBase im
 
         if (!residenceMeta.isSetup()) {
             ItemStack setupResidence = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.setupResidence");
-            this.inventory.setItem(21, setupResidence);
+            this.inventory.setItem(13, setupResidence);
         }
 
         if (residenceMeta.isSetup()) {
             ItemStack cancelSetupResidence = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.cancelSetupResidence");
-            this.inventory.setItem(23, cancelSetupResidence);
+            this.inventory.setItem(31, cancelSetupResidence);
         }
 
         ItemStack cancelSetupResidence = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.teleportResidence");
-        this.inventory.setItem(13, cancelSetupResidence);
+        this.inventory.setItem(21, cancelSetupResidence);
+        ItemStack setResidenceName = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.setResidenceName");
+        this.inventory.setItem(23, setResidenceName);
 
 
         viewer.openInventory(this.inventory);

@@ -95,6 +95,20 @@ public class GuiServiceImpl implements GuiService {
     }
 
     @Override
+    public void setResidenceName(String residenceUuid, String name) throws NotExistResidenceException, DuplicateResidenceException {
+        ResidenceMeta residenceMeta=new ResidenceDao().getByUuid(residenceUuid);
+        if (residenceMeta==null){
+            throw new NotExistResidenceException();
+        }
+        if (new ResidenceDao().getByName(name)!=null){
+            throw new DuplicateResidenceException();
+        }
+        residenceMeta.setName(name);
+        new ResidenceDao().deleteByUuid(residenceMeta.getUuid());
+        new ResidenceDao().insert(residenceMeta);
+    }
+
+    @Override
     public List<ResidenceMeta> listResidence(String ownerUuid) {
         List<ResidenceMeta> residenceMetaList=new ResidenceDao().listByOwnerUuid(ownerUuid);
 

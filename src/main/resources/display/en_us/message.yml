@@ -1,6 +1,6 @@
 message:
 
-  #What to enter to cancel the operation, fill in the blank or "" then the default value is used
+  #What to enter to cancel the action, fill in the blank or "" then the default value is used
   input:
     cancel: "cancel"
   chat:
@@ -60,19 +60,22 @@ message:
       - "&c&l teleported too quickly twice"
     beyondResidenceAmountWhenCreateResidence:
       - "&c&l exceeded the maximum number of territories that can be created"
-
+    duplicateResidenceWhenSetResidenceName:
+      - "&c&lThe name of the territory is duplicated"
 
 
     howToCreateResidence:
-      - "&b&lEnter the name of the residence to finish creating it, enter &f to cancel &b&l to cancel"
+      - "&b&lEnter the name of the residence to complete creation, enter &f to cancel &b&l to cancel"
     howToDeleteResidence:
-      - "&b&lEnter the name of the residence to complete deletion, enter &f Cancel &b&l Cancel"
+      - "&b&lEnter the name of the residence to complete deletion, enter &fCancel &b&lCancel"
     howToSetResidenceOwner:
-      - "&b&lEnter the player's name to complete setting, enter &f to cancel &b&l to cancel"
+      - "&b&lEnter the name of the player to complete setting, enter &f Cancel &b&l Cancel"
+    howToSetResidenceName:
+      - "&b&lEnter name to complete setting, enter &f to cancel &b&l to cancel"
 
 
     teleportResidence:
-      - "&b&l teleported to the residence"
+      - "&B&l teleported to the residence"
     reloadPlugin:
       - "&b&l successfully reloaded the plugin."
     setFirstLocation:
@@ -85,6 +88,8 @@ message:
       - "&b&l deleted the residence"
     setResidenceOwner:
       - "&b&l successfully set the new owner"
+    setResidenceName:
+      - "&b&l successfully set the new name"
     setupResidence:
       - "&b&l placed the territory"
     cancelSetupResidence:

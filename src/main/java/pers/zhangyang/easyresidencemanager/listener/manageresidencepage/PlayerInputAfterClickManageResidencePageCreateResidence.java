@@ -2,10 +2,7 @@ package pers.zhangyang.easyresidencemanager.listener.manageresidencepage;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Container;
@@ -131,7 +128,8 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
             }
         }
 
-        ResidenceMeta residenceMeta=new ResidenceMeta(UuidUtil.getUUID(),messages[0],owner.getUniqueId().toString(),
+        ResidenceMeta residenceMeta=new ResidenceMeta(UuidUtil.getUUID(),
+                ChatColor.translateAlternateColorCodes('&',messages[0]),owner.getUniqueId().toString(),
                 System.currentTimeMillis(), LocationUtil.serializeLocation(gamer.getFirstLocation()),
                 LocationUtil.serializeLocation(gamer.getSecondLocation()),true);
         residenceMeta.setCost(cost);

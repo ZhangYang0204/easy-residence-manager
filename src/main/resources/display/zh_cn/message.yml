@@ -60,7 +60,8 @@ message:
       - "&c&l两次传送太快了"
     beyondResidenceAmountWhenCreateResidence:
       - "&c&l超出了能创建的领地的最大数量"
-
+    duplicateResidenceWhenSetResidenceName:
+      - "&c&l领地名字重复"
 
 
     howToCreateResidence:
@@ -69,6 +70,8 @@ message:
       - "&b&l输入住宅的名字完成删除，输入 &f取消 &b&l取消"
     howToSetResidenceOwner:
       - "&b&l输入玩家的名字完成设置，输入 &f取消 &b&l取消"
+    howToSetResidenceName:
+      - "&b&l输入名字完成设置，输入 &f取消 &b&l取消"
 
 
     teleportResidence:
@@ -85,6 +88,8 @@ message:
       - "&b&l删除了住宅"
     setResidenceOwner:
       - "&b&l成功设置了新主人"
+    setResidenceName:
+      - "&b&l成功设置了新名字"
     setupResidence:
       - "&b&l安置了领地"
     cancelSetupResidence:
