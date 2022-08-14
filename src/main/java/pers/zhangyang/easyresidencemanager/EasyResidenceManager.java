@@ -8,7 +8,7 @@ public class EasyResidenceManager extends EasyPlugin {
     public void onOpen() {
 
         // bStats统计信息
-        new Metrics(EasyResidenceManager.instance,15906);
+        new Metrics(EasyResidenceManager.instance,16118);
     }
 
     @Override

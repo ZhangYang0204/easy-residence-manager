@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>pers.zhangyang</groupId>
-  <artifactId>easy-residence</artifactId>
+  <artifactId>easy-residence-manager</artifactId>
   <version>1.0.0</version>
   <build>
     <plugins>
@@ -21,11 +21,11 @@
           <relocations>
             <relocation>
               <pattern>pers.zhangyang.easylibrary</pattern>
-              <shadedPattern>pers.zhangyang.easytalk.other.pers.zhangyang.easylibrary</shadedPattern>
+              <shadedPattern>pers.zhangyang.easyresidencemanager.other.pers.zhangyang.easylibrary</shadedPattern>
             </relocation>
             <relocation>
               <pattern>org.bstats</pattern>
-              <shadedPattern>pers.zhangyang.easytalk.other.org.bstats</shadedPattern>
+              <shadedPattern>pers.zhangyang.easyresidencemanager.other.org.bstats</shadedPattern>
             </relocation>
           </relocations>
         </configuration>

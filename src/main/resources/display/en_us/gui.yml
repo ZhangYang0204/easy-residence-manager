@@ -1,0 +1,154 @@
+gui:
+
+  # the first page of the return button clicked after the execution of the command, the format of way:command, where the way refers to the way of execution, command is the command, the command does not need to add /.
+  # execution way operator, console, self, respectively, on behalf of the op identity execution (to the player op and then execute and then cancel the player op), console execution, its own execution
+  firstPageBackCommand:
+    - "self:bs"
+    - "self:cd"
+
+  title:
+    manageResidencePage: "&b&l&nManageResidence&e&l(Displayed all residences)"
+    manageResidencePageResidenceOptionPage: "&b&l&nManageResidenceOptionPage&e&l(showcases all the options)"
+
+  button:
+    manageResidencePage:
+      back:
+
+        # indicates the material of the button, to know the material name, please go to https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html查看
+        #If AIR means the button is not displayed and cannot be clicked
+        materialName: "REDSTONE"
+
+        #Indicates the name of the button
+        displayName: "&b&l&nReturn"
+
+        # indicates the description of the button, variables that can be used in lore, except those enclosed in {()}, can be used in displayName
+        lore:
+          - "&c&lclick me to return to the previous page"
+
+        # indicates the amount
+        amount: 1
+
+        # indicates flags, to know which ones you can hide, go to https://hub.spigotmc.org/javadocs/spigot/org/bukkit/inventory/ItemFlag.html
+        itemFlag:
+          - "HIDE_DESTROYS"
+
+        #which model data to use 1.12 and previous versions do not support this
+        customModelData: [ ]
+
+      manageResidencePageResidenceOptionPage:
+        materialName: "CHEST"
+        displayName: "&b&l&n residential"
+        lore:
+          - "&a&lowner: {owner_name}"
+          - "&b&lResidence name: {name}"
+          - "&c&lResidence cost: {cost}"
+          - "&e&lCreation time: {create_time}"
+          - "&f&lClick me for details"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+
+      createResidence:
+        materialName: "DIAMOND"
+        displayName: "&b&l&nCreateResidence"
+        lore:
+          - "&f&lclick me to create a residence"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+
+      selectSecondLocation:
+        materialName: "MAP"
+        displayName: "&b&l&nselectSecondLocation"
+        lore:
+          - "&f&l dot me selectSecondLocation"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      selectFirstLocation:
+        materialName: "PAPER"
+        displayName: "&b&l&nSelect first coordinate"
+        lore:
+          - "&f&l dot me select first coordinate"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      deleteResidence:
+        materialName: "BARRIER"
+        displayName: "&b&l&n deleteResidence"
+        lore:
+          - "&f&lClick me to create a residence"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+
+      previousPage:
+        materialName: "BOOK"
+        displayName: "&b&l&nPreviousPage"
+        lore:
+          - "&f&lclick me to go to previous page"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      nextPage:
+        materialName: "BOOK"
+        displayName: "&b&l&nnextPage"
+        lore:
+          - "&f&lclick me to go to the next page"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+
+    manageResidencePageResidenceOptionPage:
+      back:
+        materialName: "REDSTONE"
+        displayName: "&b&l&nReturn"
+        lore:
+          - "&c&lclick me to return to previous page"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      setupResidence:
+        materialName: "DIAMOND_BLOCK"
+        displayName: "&b&l&n Placement Territory"
+        lore:
+          - "&c&l dot me to place the territory out"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      cancelSetupResidence:
+        materialName: "IRON_BLOCK"
+        displayName: "&b&l&nCancelSetupResidence"
+        lore:
+          - "&c&l dot I cancel the territory from placement, i.e. take it back"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: []
+      setResidenceOwner:
+        materialName: "BOOKSHELF"
+        displayName: "&b&l&nGiveawayLocation"
+        lore:
+          - "&c&l dot I give the territory to someone else"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: []
+      teleportResidence:
+        materialName: "IRON_INGOT"
+        displayName: "&b&l&n teleport to territory"
+        lore:
+          - "&c&l dot me to territory"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: []

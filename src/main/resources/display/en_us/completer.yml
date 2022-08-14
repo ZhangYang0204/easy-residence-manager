@@ -1,0 +1,9 @@
+completer:
+
+  #when /easyResidenceManager is entered the following will be prompted to complete
+  easyResidenceManager:
+    - "help"
+    - "reloadPlugin"
+    - "correctYaml"
+    - "openGui"
+    - "openMui"
