@@ -79,10 +79,10 @@ public class PlayerClickManageResidencePageResidenceOptionPageSetupResidence imp
                 BlockState blockState=block.getState();
                 blockState.setType(materialData.getItemType());
                 blockState.setRawData(materialData.getData());
+                blockState.setData(materialData);
                 blockState.update(true,false);
             }else {
                 block.setBlockData(Bukkit.createBlockData(b.getBlock()));
-                block.getState().update(true,false);
             }
 
         }

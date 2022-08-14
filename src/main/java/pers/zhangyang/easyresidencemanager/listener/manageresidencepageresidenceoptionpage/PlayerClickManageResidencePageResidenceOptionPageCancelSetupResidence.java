@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.BlockInventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.MaterialData;
 import pers.zhangyang.easylibrary.annotation.EventListener;
 import pers.zhangyang.easylibrary.annotation.GuiDiscreteButtonHandler;
 import pers.zhangyang.easylibrary.util.*;
@@ -160,7 +161,17 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
                     if (block.getType().equals(Material.AIR)){
                         continue;
                     }
-                    block.setBlockData(Bukkit.createBlockData(Material.BARRIER));
+
+                    if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
+                        BlockState blockState=block.getState();
+                        blockState.setType(Material.BARRIER);
+                        blockState.setRawData(new MaterialData(Material.BARRIER).getData());
+                        blockState.setData(new MaterialData(Material.BARRIER));
+
+                        blockState.update(true,false);
+                    } else {
+                        block.setBlockData(Bukkit.createBlockData(Material.BARRIER));
+                    }
                 }
             }
         }
