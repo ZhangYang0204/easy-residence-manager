@@ -14,6 +14,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.BlockInventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
+import org.bukkit.scheduler.BukkitRunnable;
+import pers.zhangyang.easylibrary.EasyPlugin;
 import pers.zhangyang.easylibrary.annotation.EventListener;
 import pers.zhangyang.easylibrary.annotation.GuiDiscreteButtonHandler;
 import pers.zhangyang.easylibrary.util.*;
@@ -37,147 +39,172 @@ import java.util.List;
 public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResidence implements Listener {
     @GuiDiscreteButtonHandler(guiPage = ManageResidencePageResidenceOptionPage.class,slot = {31})
     public void on(InventoryClickEvent event){
-        Player player= (Player) event.getWhoClicked();
-
-        int slot=event.getRawSlot();
-        ManageResidencePageResidenceOptionPage manageTeleportAskPage= (ManageResidencePageResidenceOptionPage) event.getInventory().getHolder();
 
 
-        assert manageTeleportAskPage != null;
-        ResidenceMeta residenceMeta=manageTeleportAskPage.getResidenceMeta();
+
+                Player player= (Player) event.getWhoClicked();
+
+                int slot=event.getRawSlot();
+                ManageResidencePageResidenceOptionPage manageTeleportAskPage= (ManageResidencePageResidenceOptionPage) event.getInventory().getHolder();
 
 
-        List<ResidenceBlockMeta> residenceBlockMetaList=new ArrayList<>();
+                assert manageTeleportAskPage != null;
+                ResidenceMeta residenceMeta=manageTeleportAskPage.getResidenceMeta();
 
-        List<ResidenceInventoryContentMeta> residenceInventoryContentMetaList =new ArrayList<>();
+
+                List<ResidenceBlockMeta> residenceBlockMetaList=new ArrayList<>();
+
+                List<ResidenceInventoryContentMeta> residenceInventoryContentMetaList =new ArrayList<>();
+
+                Player onlineOwner=manageTeleportAskPage.getOwner().getPlayer();
+                if (onlineOwner==null){
+                    List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notOnline");
+                    MessageUtil.sendMessageTo(player, list);
+                    return;
+                }
+
+                Gamer gamer=GamerManager.INSTANCE.getGamer(onlineOwner);
+
+                if (gamer.isShowing()){
+                    List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.showingSelectedSectionWhenCancelSetupResidence");
+                    MessageUtil.sendMessageTo(player, list);
+                    return;
+                }
 
 
-        //保存方块数据
-        int x1 = LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getBlockX();
-        int x2 = LocationUtil.deserializeLocation(residenceMeta.getSecondLocation()).getBlockX();
-        int z1 = LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getBlockZ();
-        int z2 = LocationUtil.deserializeLocation(residenceMeta.getSecondLocation()).getBlockZ();
-        int y1 = LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getBlockY();
-        int y2 = LocationUtil.deserializeLocation(residenceMeta.getSecondLocation()).getBlockY();
-        int xFrom = Math.min(x1, x2);
-        int xTo = Math.max(x1, x2);
-        int yFrom = Math.min(y1, y2);
-        int yTo = Math.max(y1, y2);
-        int zFrom = Math.min(z1, z2);
-        int zTo = Math.max(z1, z2);
-        for (int x = xFrom; x <= xTo; x++) {
-            for (int y = yFrom; y <= yTo; y++) {
-                for (int z = zFrom; z <= zTo; z++) {
-                    Location location=new Location(LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getWorld(), x, y, z);
-                    Block block = location.getBlock();
-                    if (block.getType().equals(Material.AIR)){
-                        continue;
-                    }
-                    BlockState blockState = block.getState();
-                    if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
-                        if (blockState instanceof Container) {
-                            ItemStack[] invContentsO = ((Container) blockState).getInventory().getContents();
-                            String[] invContents=new String[invContentsO.length];
-                            for (int i=0;i<invContentsO.length;i++){
-                                if (invContentsO[i]==null){
-                                    invContents[i]=null;
-                                    continue;
-                                }
-                                invContents[i]= ItemStackUtil.itemStackSerialize(invContentsO[i]);
+                //保存方块数据
+                int x1 = LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getBlockX();
+                int x2 = LocationUtil.deserializeLocation(residenceMeta.getSecondLocation()).getBlockX();
+                int z1 = LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getBlockZ();
+                int z2 = LocationUtil.deserializeLocation(residenceMeta.getSecondLocation()).getBlockZ();
+                int y1 = LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getBlockY();
+                int y2 = LocationUtil.deserializeLocation(residenceMeta.getSecondLocation()).getBlockY();
+                int xFrom = Math.min(x1, x2);
+                int xTo = Math.max(x1, x2);
+                int yFrom = Math.min(y1, y2);
+                int yTo = Math.max(y1, y2);
+                int zFrom = Math.min(z1, z2);
+                int zTo = Math.max(z1, z2);
+                for (int y = yFrom; y <= yTo; y++) {
+                    for (int x = xFrom; x <= xTo; x++) {
+
+                        for (int z = zFrom; z <= zTo; z++) {
+                            Location location=new Location(LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getWorld(), x, y, z);
+                            Block block = location.getBlock();
+                            if (block.getType().equals(Material.AIR)){
+                                continue;
                             }
-                            Gson gson=new GsonBuilder().serializeNulls().create();
-                            String inventoryContent=gson.toJson(invContents);
-                            ResidenceInventoryContentMeta residenceInventoryContentMeta=new ResidenceInventoryContentMeta(
-                                    residenceMeta.getUuid(), LocationUtil.serializeLocation(location),inventoryContent
-                            );
-                            residenceInventoryContentMetaList.add(residenceInventoryContentMeta);
-                        }
-                    } else {
-                        if (blockState instanceof BlockInventoryHolder) {
-                            ItemStack[] invContentsO = ((BlockInventoryHolder) blockState).getInventory().getContents();
-                            String[] invContents=new String[invContentsO.length];
-                            for (int i=0;i<invContentsO.length;i++){
-                                if (invContentsO[i]==null){
-                                    invContents[i]=null;
-                                    continue;
+                            BlockState blockState = block.getState();
+                            if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
+                                if (blockState instanceof Container) {
+                                    ItemStack[] invContentsO = ((Container) blockState).getInventory().getContents();
+                                    String[] invContents=new String[invContentsO.length];
+                                    for (int i=0;i<invContentsO.length;i++){
+                                        if (invContentsO[i]==null){
+                                            invContents[i]=null;
+                                            continue;
+                                        }
+                                        invContents[i]= ItemStackUtil.itemStackSerialize(invContentsO[i]);
+                                    }
+                                    Gson gson=new GsonBuilder().serializeNulls().create();
+                                    String inventoryContent=gson.toJson(invContents);
+                                    ResidenceInventoryContentMeta residenceInventoryContentMeta=new ResidenceInventoryContentMeta(
+                                            residenceMeta.getUuid(), LocationUtil.serializeLocation(location),inventoryContent
+                                    );
+                                    residenceInventoryContentMetaList.add(residenceInventoryContentMeta);
                                 }
-                                invContents[i]=ItemStackUtil.itemStackSerialize(invContentsO[i]);
+                            } else {
+                                if (blockState instanceof BlockInventoryHolder) {
+                                    ItemStack[] invContentsO = ((BlockInventoryHolder) blockState).getInventory().getContents();
+                                    String[] invContents=new String[invContentsO.length];
+                                    for (int i=0;i<invContentsO.length;i++){
+                                        if (invContentsO[i]==null){
+                                            invContents[i]=null;
+                                            continue;
+                                        }
+                                        invContents[i]=ItemStackUtil.itemStackSerialize(invContentsO[i]);
+                                    }
+
+                                    Gson gson=new GsonBuilder().serializeNulls().create();
+                                    String inventoryContent=gson.toJson(invContents);
+                                    ResidenceInventoryContentMeta residenceInventoryContentMeta=new ResidenceInventoryContentMeta(
+                                            residenceMeta.getUuid(),LocationUtil.serializeLocation(location),inventoryContent
+                                    );
+
+                                    residenceInventoryContentMetaList.add(residenceInventoryContentMeta);
+
+                                }
                             }
 
-                            Gson gson=new GsonBuilder().serializeNulls().create();
-                            String inventoryContent=gson.toJson(invContents);
-                            ResidenceInventoryContentMeta residenceInventoryContentMeta=new ResidenceInventoryContentMeta(
-                                    residenceMeta.getUuid(),LocationUtil.serializeLocation(location),inventoryContent
-                            );
+                            ResidenceBlockMeta blockInfo;
 
-                            residenceInventoryContentMetaList.add(residenceInventoryContentMeta);
+                            if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
+                                blockInfo = new ResidenceBlockMeta(residenceMeta.getUuid(),LocationUtil.serializeLocation(location),
+                                        MaterialDataUtil.serializeMaterialData(blockState.getData()));
+                            } else {
+                                blockInfo = new ResidenceBlockMeta(residenceMeta.getUuid(),LocationUtil.serializeLocation(location),
+                                        blockState.getBlockData().getAsString());
+                            }
+                            residenceBlockMetaList.add(blockInfo);
+
 
                         }
+
                     }
-
-                    ResidenceBlockMeta blockInfo;
-
-                    if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
-                        blockInfo = new ResidenceBlockMeta(residenceMeta.getUuid(),LocationUtil.serializeLocation(location),
-                                MaterialDataUtil.serializeMaterialData(blockState.getData()));
-                    } else {
-                        blockInfo = new ResidenceBlockMeta(residenceMeta.getUuid(),LocationUtil.serializeLocation(location),
-                                blockState.getBlockData().getAsString());
-                    }
-                    residenceBlockMetaList.add(blockInfo);
-
 
                 }
-            }
-        }
 
 
 
+                GuiService guiService= (GuiService) new TransactionInvocationHandler(new GuiServiceImpl()).getProxy();
+                try {
+                    guiService.cancelSetupResidence(residenceMeta.getUuid(),residenceBlockMetaList,residenceInventoryContentMetaList);
+                } catch (NotExistResidenceException e) {
 
+                    List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notExistResidence");
+                    MessageUtil.sendMessageTo(player, list);
+                    return;
+                } catch (NotSetUpResidenceException e) {
+                    List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSetupResidence");
+                    MessageUtil.sendMessageTo(player, list);
+                    return;
+                }finally {
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            manageTeleportAskPage.refresh();
+                        }
+                    }.runTask(EasyPlugin.instance);
+                }
 
+                for (int x = xFrom; x <= xTo; x++) {
+                    for (int y = yFrom; y <= yTo; y++) {
+                        for (int z = zFrom; z <= zTo; z++) {
+                            Location location=new Location(LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getWorld(), x, y, z);
+                            Block block=location.getBlock();
+                            if (block.getType().equals(Material.AIR)){
+                                continue;
+                            }
 
+                            if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
+                                BlockState blockState=block.getState();
+                                blockState.setType(Material.BARRIER);
+                                blockState.setRawData(new MaterialData(Material.BARRIER).getData());
+                                blockState.setData(new MaterialData(Material.BARRIER));
 
-        GuiService guiService= (GuiService) new TransactionInvocationHandler(new GuiServiceImpl()).getProxy();
-        try {
-            guiService.cancelSetupResidence(residenceMeta.getUuid(),residenceBlockMetaList,residenceInventoryContentMetaList);
-        } catch (NotExistResidenceException e) {
-
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notExistResidence");
-            MessageUtil.sendMessageTo(player, list);
-            return;
-        } catch (NotSetUpResidenceException e) {
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSetupResidence");
-            MessageUtil.sendMessageTo(player, list);
-            return;
-        }finally {
-            manageTeleportAskPage.refresh();
-        }
-
-        for (int x = xFrom; x <= xTo; x++) {
-            for (int y = yFrom; y <= yTo; y++) {
-                for (int z = zFrom; z <= zTo; z++) {
-                    Location location=new Location(LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getWorld(), x, y, z);
-                    Block block=location.getBlock();
-                    if (block.getType().equals(Material.AIR)){
-                        continue;
-                    }
-
-                    if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
-                        BlockState blockState=block.getState();
-                        blockState.setType(Material.BARRIER);
-                        blockState.setRawData(new MaterialData(Material.BARRIER).getData());
-                        blockState.setData(new MaterialData(Material.BARRIER));
-
-                        blockState.update(true,false);
-                    } else {
-                        block.setBlockData(Bukkit.createBlockData(Material.BARRIER));
+                                blockState.update(true,false);
+                            } else {
+                                block.setBlockData(Bukkit.createBlockData(Material.BARRIER));
+                            }
+                        }
                     }
                 }
-            }
-        }
 
 
-        List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.cancelSetupResidence");
-        MessageUtil.sendMessageTo(player, list);
+                List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.cancelSetupResidence");
+                MessageUtil.sendMessageTo(player, list);
+
+
+
     }
 }

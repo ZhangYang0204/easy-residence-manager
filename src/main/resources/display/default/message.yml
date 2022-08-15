@@ -70,7 +70,8 @@ message:
       - "&c&l选区的世界不在一个世界"
     notSelectedTwoLocationWhenCreateResidence:
       - "&c&l请先设置2个坐标围成的选区"
-
+    showingSelectedSectionWhenCancelSetupResidence:
+      - "&c&l正在展示选区，请等待展示完毕"
 
     howToCreateResidence:
       - "&b&l输入住宅的名字完成创建，输入 &f取消 &b&l取消"
