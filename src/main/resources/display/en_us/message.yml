@@ -16,7 +16,7 @@ message:
       - "&b&l/EasyResidenceManager reloadPlugin reload plugin"
       - "&b&l/EasyResidenceManager correctYaml Fix Yaml file"
     notifyVersion:
-      - "&b&lThe current version of EasyResidenceManager is &f{current_version}, &b&lThe latest version is &f{latest_version}."
+      - "&b&lThe current version of EasyResidenceManager is &f{current_version}, &b&lthe latest version is &f{latest_version}."
     enablePlugin:
       - "&a╭━━━╮╱╱╱╱╱╱╱╱╱╭━━━╮╱╱╱╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╭━╮╭━╮"
       - "&a┃╭━━╯╱╱╱╱╱╱╱╱╱┃╭━╮┃╱╱╱╱╱╱╱╱┃┃╱╱╱╱╱╱╱╱╱╱╱┃┃╰╯┃┃"
@@ -70,12 +70,13 @@ message:
       - "&c&lThe world of the selection is not in a world"
     notSelectedTwoLocationWhenCreateResidence:
       - "&c&lPlease set the selection surrounded by 2 coordinates first"
-
+    showingSelectedSectionWhenCancelSetupResidence:
+      - "&c&l is showing the selection, please wait until it is finished"
 
     howToCreateResidence:
-      - "&b&lEnter the name of the residence to complete the creation, enter &f to cancel &b&l to cancel"
+      - "&b&lEnter the name of the residence to complete creation, enter &f to cancel &b&l to cancel"
     howToDeleteResidence:
-      - "&b&lEnter the name of the residence to complete deletion, enter &f Cancel &b&l Cancel"
+      - "&b&lEnter the name of the residence to complete deletion, enter &fCancel &b&lCancel"
     howToSetResidenceOwner:
       - "&b&lEnter the player's name to complete setting, enter &f Cancel &b&l Cancel"
     howToSetResidenceName:
