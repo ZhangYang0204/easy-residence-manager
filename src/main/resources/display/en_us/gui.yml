@@ -58,7 +58,15 @@ gui:
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: [ ]
-
+      showSelectedSection:
+        materialName: "MAP"
+        displayName: "&b&l&n displaySelectedSection"
+        lore:
+          - "&f&lclick me to display the selection"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
       selectSecondLocation:
         materialName: "MAP"
         displayName: "&b&l&nselectSecondLocation"
@@ -72,7 +80,7 @@ gui:
         materialName: "PAPER"
         displayName: "&b&l&nSelect first coordinate"
         lore:
-          - "&f&lclick me to select the first coordinate"
+          - "&f&l dot me select first coordinate"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"
@@ -111,7 +119,7 @@ gui:
         materialName: "REDSTONE"
         displayName: "&b&l&nReturn"
         lore:
-          - "&c&lclick me to return to the previous page"
+          - "&c&lclick me to return to previous page"
         amount: 1
         itemFlag:
           - "HIDE_DESTROYS"

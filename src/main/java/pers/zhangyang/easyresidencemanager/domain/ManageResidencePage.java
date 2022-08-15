@@ -91,6 +91,8 @@ public class ManageResidencePage extends MultipleGuiPageBase implements BackAble
 
         ItemStack selectSecondLocation= GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePage.selectSecondLocation");
         this.inventory.setItem(51,selectSecondLocation);
+        ItemStack showSelectedSection= GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePage.showSelectedSection");
+        this.inventory.setItem(52,showSelectedSection);
 
 
         if (pageIndex > 0) {

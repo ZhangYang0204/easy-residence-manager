@@ -1,6 +1,6 @@
 message:
 
-  #What to enter to cancel the action, fill in the blank or "" then the default value is used
+  #What to enter to cancel the operation, fill in the blank or "" then the default value is used
   input:
     cancel: "cancel"
   chat:
@@ -61,21 +61,31 @@ message:
     beyondResidenceAmountWhenCreateResidence:
       - "&c&l exceeded the maximum number of territories that can be created"
     duplicateResidenceWhenSetResidenceName:
-      - "&c&lThe name of the territory is duplicated"
+      - "&c&lDuplicateResidenceName"
+    notSameWorldLocationWhenShowSelectedSection:
+      - "&c&lThe selected worlds are not in a world"
+    notSelectedTwoLocationWhenShowSelectedSection:
+      - "&c&lPlease set the selection enclosed by 2 coordinates first"
+    notSameWorldLocationWhenCreateResidence:
+      - "&c&lThe world of the selection is not in a world"
+    notSelectedTwoLocationWhenCreateResidence:
+      - "&c&lPlease set the selection surrounded by 2 coordinates first"
 
 
     howToCreateResidence:
-      - "&b&lEnter the name of the residence to complete creation, enter &f to cancel &b&l to cancel"
+      - "&b&lEnter the name of the residence to complete the creation, enter &f to cancel &b&l to cancel"
     howToDeleteResidence:
-      - "&b&lEnter the name of the residence to complete deletion, enter &fCancel &b&lCancel"
+      - "&b&lEnter the name of the residence to complete deletion, enter &f Cancel &b&l Cancel"
     howToSetResidenceOwner:
-      - "&b&lEnter the name of the player to complete setting, enter &f Cancel &b&l Cancel"
+      - "&b&lEnter the player's name to complete setting, enter &f Cancel &b&l Cancel"
     howToSetResidenceName:
       - "&b&lEnter name to complete setting, enter &f to cancel &b&l to cancel"
 
 
+    showSelectedSection:
+      - "&B&l showSelectedSection"
     teleportResidence:
-      - "&B&l teleported to the residence"
+      - "&B&l teleported to residence"
     reloadPlugin:
       - "&b&l successfully reloaded the plugin."
     setFirstLocation:

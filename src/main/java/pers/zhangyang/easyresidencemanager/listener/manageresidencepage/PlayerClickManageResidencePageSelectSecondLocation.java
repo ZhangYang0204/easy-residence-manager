@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import pers.zhangyang.easylibrary.annotation.EventListener;
 import pers.zhangyang.easylibrary.annotation.GuiDiscreteButtonHandler;
+import pers.zhangyang.easylibrary.util.BlockEffectUtil;
 import pers.zhangyang.easylibrary.util.MessageUtil;
 import pers.zhangyang.easylibrary.yaml.MessageYaml;
 import pers.zhangyang.easyresidencemanager.domain.Gamer;
@@ -30,6 +31,8 @@ public class PlayerClickManageResidencePageSelectSecondLocation implements Liste
         }
         Gamer gamer= GamerManager.INSTANCE.getGamer(onlineOwner);
         gamer.setSecondLocation(player.getLocation());
+
+
 
         List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.setSecondLocation");
         MessageUtil.sendMessageTo(player, list);

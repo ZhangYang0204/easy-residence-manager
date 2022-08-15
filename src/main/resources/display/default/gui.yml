@@ -58,7 +58,15 @@ gui:
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: [ ]
-
+      showSelectedSection:
+        materialName: "MAP"
+        displayName: "&b&l&n展示选区"
+        lore:
+          - "&f&l点我展示选区"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
       selectSecondLocation:
         materialName: "MAP"
         displayName: "&b&l&n选择第二个坐标"

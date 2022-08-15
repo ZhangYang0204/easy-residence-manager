@@ -67,7 +67,16 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
             MessageUtil.sendMessageTo(player, list);
             return;
         }
-
+        if (gamer.getFirstLocation()==null||gamer.getSecondLocation()==null){
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSelectedTwoLocationWhenCreateResidence");
+            MessageUtil.sendMessageTo(player, list);
+            return;
+        }
+        if (LocationUtil.isDifferentWorld(gamer.getFirstLocation(),gamer.getSecondLocation())){
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSameWorldLocationWhenCreateResidence");
+            MessageUtil.sendMessageTo(player, list);
+            return;
+        }
 
 
 
@@ -107,7 +116,7 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
 
         Double perBlockCost= SettingYaml.INSTANCE.getNonnegativeDouble("setting.perBlockCost");
 
-        Double cost=null;
+        Double cost;
 
         if (perBlockCost==null){
             cost=null;
