@@ -60,7 +60,7 @@ public class PlayerClickManageResidencePageResidenceOptionPageTeleportResidence 
             if (gamer.getLastBackTime() != null && System.currentTimeMillis() - gamer.getLastBackTime()
                     < perm * 1000L) {
 
-                List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.tooFastWhenTeleportResidence");
+                List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.tooFast");
                 MessageUtil.sendMessageTo(viewer, list);
                 return;
             }

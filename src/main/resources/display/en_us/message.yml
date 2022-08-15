@@ -40,25 +40,25 @@ message:
     notHookVault:
       - "&c&lVault and Vault-based economy plugins are not detected."
 
-    notEnoughVaultWhenCreateResidence:
+    notEnoughVault:
       - "&c&l did not have enough gold to create a residence."
     duplicateResidenceWhenCreateResidence:
       - "&c&l Duplicate residence name"
-    conflictResidenceWhenCreateResidence:
+    conflictResidence:
       - "&c&l conflicted with another territory"
     notSetupResidenceWhenDeleteResidence:
       - "&c&lPlease settle out of the territory first, then delete the territory"
-    worldBlackListWhenCreateResidence:
+    worldBlackList:
       - "&c&lThe world you are in is on the world black list, creating residences is prohibited"
-    beyondYLengthWhenCreateResidence:
+    beyondYLength:
       - "&c&lExceeded the maximum Y distance of the territories that can be created"
-    beyondXLengthWhenCreateResidence:
+    beyondXLength:
       - "&c&l exceeds the maximum X distance of the territory that can be created"
-    beyondZLengthWhenCreateResidence:
+    beyondZLength:
       - "&c&l exceeds the maximum Z distance of the territory that can be created"
-    tooFastWhenTeleportResidence:
+    tooFast:
       - "&c&l teleported too quickly twice"
-    beyondResidenceAmountWhenCreateResidence:
+    beyondResidenceAmount:
       - "&c&l exceeded the maximum number of territories that can be created"
     duplicateResidenceWhenSetResidenceName:
       - "&c&lDuplicateResidenceName"
@@ -70,7 +70,7 @@ message:
       - "&c&lThe world of the selection is not in a world"
     notSelectedTwoLocationWhenCreateResidence:
       - "&c&lPlease set the selection surrounded by 2 coordinates first"
-    showingSelectedSectionWhenCancelSetupResidence:
+    showingSelectedSection:
       - "&c&l is showing the selection, please wait until it is finished"
 
     howToCreateResidence:

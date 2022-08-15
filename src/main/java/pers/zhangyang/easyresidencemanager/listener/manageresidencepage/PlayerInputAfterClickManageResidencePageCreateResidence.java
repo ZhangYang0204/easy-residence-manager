@@ -51,7 +51,7 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
         List<String> worldNameBlackList=SettingYaml.INSTANCE.getStringList("setting.worldBlackList");
         World world=gamer.getFirstLocation().getWorld();
         if (world!=null&&worldNameBlackList!=null &&worldNameBlackList.contains(world.getName())){
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.worldBlackListWhenCreateResidence");
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.worldBlackList");
             MessageUtil.sendMessageTo(player, list);
             return;
         }
@@ -63,7 +63,7 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
         }
         GuiService guiService= (GuiService) new TransactionInvocationHandler(new GuiServiceImpl()).getProxy();
         if (!onlineOwner.isOp()&&amountPerm<=guiService.listResidence(onlineOwner.getUniqueId().toString()).size()){
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.beyondResidenceAmountWhenCreateResidence");
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.beyondResidenceAmount");
             MessageUtil.sendMessageTo(player, list);
             return;
         }
@@ -98,17 +98,17 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
             yPerm=0;
         }
         if (!onlineOwner.isOp()&&xPerm<xLength){
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.beyondXLengthWhenCreateResidence");
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.beyondXLength");
             MessageUtil.sendMessageTo(player, list);
             return;
         }
         if (!onlineOwner.isOp()&&zPerm<zLength){
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.beyondZLengthWhenCreateResidence");
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.beyondZLength");
             MessageUtil.sendMessageTo(player, list);
             return;
         }
         if (!onlineOwner.isOp()&&yPerm<yLength){
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.beyondYLengthWhenCreateResidence");
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.beyondYLength");
             MessageUtil.sendMessageTo(player, list);
             return;
         }
@@ -131,7 +131,7 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
                 return;
             }
             if (!Vault.hook().has(onlineOwner,cost)){
-                List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notEnoughVaultWhenCreateResidence");
+                List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notEnoughVault");
                 MessageUtil.sendMessageTo(player, list);
                 return;
             }
@@ -158,7 +158,7 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
             return;
         } catch (ConflictResidenceException e) {
 
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.conflictResidenceWhenCreateResidence");
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.conflictResidence");
             MessageUtil.sendMessageTo(player, list);
             return;
         }

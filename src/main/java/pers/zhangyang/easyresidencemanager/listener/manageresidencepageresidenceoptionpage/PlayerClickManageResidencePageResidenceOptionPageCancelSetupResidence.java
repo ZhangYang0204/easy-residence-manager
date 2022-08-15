@@ -59,7 +59,7 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
         Gamer gamer = GamerManager.INSTANCE.getGamer(onlineOwner);
 
         if (gamer.isShowing()) {
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.showingSelectedSectionWhenCancelSetupResidence");
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.showingSelectedSection");
             MessageUtil.sendMessageTo(player, list);
             return;
         }

@@ -40,25 +40,25 @@ message:
     notHookVault:
       - "&c&l未检测到Vault和基于Vault的经济插件。"
 
-    notEnoughVaultWhenCreateResidence:
+    notEnoughVault:
       - "&c&l没有足够的金币创建住宅"
     duplicateResidenceWhenCreateResidence:
       - "&c&l重复的住宅名字"
-    conflictResidenceWhenCreateResidence:
+    conflictResidence:
       - "&c&l和其他领地冲突了"
     notSetupResidenceWhenDeleteResidence:
       - "&c&l请先安放出来领地，再删除领地"
-    worldBlackListWhenCreateResidence:
+    worldBlackList:
       - "&c&l你所处的世界在世界黑名单，禁止创建住宅"
-    beyondYLengthWhenCreateResidence:
+    beyondYLength:
       - "&c&l超出了能创建的领地的最大的Y距离"
-    beyondXLengthWhenCreateResidence:
+    beyondXLength:
       - "&c&l超出了能创建的领地的最大的X距离"
-    beyondZLengthWhenCreateResidence:
+    beyondZLength:
       - "&c&l超出了能创建的领地的最大的Z距离"
-    tooFastWhenTeleportResidence:
+    tooFast:
       - "&c&l两次传送太快了"
-    beyondResidenceAmountWhenCreateResidence:
+    beyondResidenceAmount:
       - "&c&l超出了能创建的领地的最大数量"
     duplicateResidenceWhenSetResidenceName:
       - "&c&l领地名字重复"
@@ -70,7 +70,7 @@ message:
       - "&c&l选区的世界不在一个世界"
     notSelectedTwoLocationWhenCreateResidence:
       - "&c&l请先设置2个坐标围成的选区"
-    showingSelectedSectionWhenCancelSetupResidence:
+    showingSelectedSection:
       - "&c&l正在展示选区，请等待展示完毕"
 
     howToCreateResidence:
