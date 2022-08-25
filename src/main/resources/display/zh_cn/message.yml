@@ -3,6 +3,8 @@ message:
   #输入什么取消操作，填空或者为""则采用默认值
   input:
     cancel: "取消"
+
+    #下面支持Papi变量
   chat:
     failureGetLatestVersion:
       - "&c&l获得EasyResidenceManager最新版本失败。"
@@ -44,6 +46,8 @@ message:
       - "&c&l没有足够的金币创建住宅"
     duplicateResidenceWhenCreateResidence:
       - "&c&l重复的住宅名字"
+    duplicateResidenceWhenSetResidenceName:
+      - "&c&l领地名字重复"
     conflictResidence:
       - "&c&l和其他领地冲突了"
     notSetupResidenceWhenDeleteResidence:
@@ -60,14 +64,12 @@ message:
       - "&c&l两次传送太快了"
     beyondResidenceAmount:
       - "&c&l超出了能创建的领地的最大数量"
-    duplicateResidenceWhenSetResidenceName:
-      - "&c&l领地名字重复"
     notSameWorldLocationWhenShowSelectedSection:
+      - "&c&l选区的世界不在一个世界"
+    notSameWorldLocationWhenCreateResidence:
       - "&c&l选区的世界不在一个世界"
     notSelectedTwoLocationWhenShowSelectedSection:
       - "&c&l请先设置2个坐标围成的选区"
-    notSameWorldLocationWhenCreateResidence:
-      - "&c&l选区的世界不在一个世界"
     notSelectedTwoLocationWhenCreateResidence:
       - "&c&l请先设置2个坐标围成的选区"
     showingSelectedSection:

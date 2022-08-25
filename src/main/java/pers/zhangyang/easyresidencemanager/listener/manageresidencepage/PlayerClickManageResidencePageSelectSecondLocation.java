@@ -15,7 +15,7 @@ import java.util.List;
 
 @EventListener
 public class PlayerClickManageResidencePageSelectSecondLocation implements Listener {
-    @GuiDiscreteButtonHandler(guiPage = ManageResidencePage.class,slot = {51})
+    @GuiDiscreteButtonHandler(guiPage = ManageResidencePage.class,slot = {51},refreshGui = true,closeGui = false)
     public void on(InventoryClickEvent event){
 
         Player player= (Player) event.getWhoClicked();

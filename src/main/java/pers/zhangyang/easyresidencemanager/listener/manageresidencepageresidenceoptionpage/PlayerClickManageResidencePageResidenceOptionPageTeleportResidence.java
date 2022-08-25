@@ -23,7 +23,7 @@ import java.util.List;
 
 @EventListener
 public class PlayerClickManageResidencePageResidenceOptionPageTeleportResidence implements Listener {
-    @GuiDiscreteButtonHandler(guiPage = ManageResidencePageResidenceOptionPage.class,slot = {21})
+    @GuiDiscreteButtonHandler(guiPage = ManageResidencePageResidenceOptionPage.class,slot = {21},refreshGui = false,closeGui = true)
     public void on(InventoryClickEvent event){
 
 

@@ -13,7 +13,7 @@ import pers.zhangyang.easyresidencemanager.meta.ResidenceMeta;
 
 @EventListener
 public class PlayerClickManageResidencePageManageResidencePageResidenceOptionPage implements Listener {
-    @GuiSerialButtonHandler(guiPage = ManageResidencePage.class,from = 0,to = 44)
+    @GuiSerialButtonHandler(guiPage = ManageResidencePage.class,from = 0,to = 44,refreshGui = false,closeGui = false)
     public void on(InventoryClickEvent event){
         int slot=event.getRawSlot();
         Player player= (Player) event.getWhoClicked();

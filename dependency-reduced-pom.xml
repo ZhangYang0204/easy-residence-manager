@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>pers.zhangyang</groupId>
   <artifactId>easy-residence-manager</artifactId>
-  <version>1.1.2</version>
+  <version>1.2.0</version>
   <build>
     <plugins>
       <plugin>
@@ -48,6 +48,10 @@
     <repository>
       <id>placeholderapi</id>
       <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+    </repository>
+    <repository>
+      <id>spigot-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
   </repositories>
   <dependencies>

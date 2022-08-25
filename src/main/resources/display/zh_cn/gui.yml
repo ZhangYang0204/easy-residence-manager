@@ -2,6 +2,7 @@ gui:
 
   #第一个页面的返回按钮点击后执行的指令，格式为 way:command，其中的way指代执行的方式，command是命令，命令无需加/，
   #执行方式有operator、console、self，分别代表以op身份执行（给玩家op然后执行然后取消玩家op）、控制台执行、自身执行
+  #下面支持Papi变量
   firstPageBackCommand:
     - "self:bs"
     - "self:cd"

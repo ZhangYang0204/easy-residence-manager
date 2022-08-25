@@ -2,6 +2,7 @@ gui:
 
   # the first page of the return button clicked after the execution of the command, the format of way:command, where the way refers to the way of execution, command is the command, the command does not need to add /.
   # execution way operator, console, self, respectively, on behalf of the op identity execution (to the player op and then execute and then cancel the player op), console execution, its own execution
+  # Below support Papi variables
   firstPageBackCommand:
     - "self:bs"
     - "self:cd"

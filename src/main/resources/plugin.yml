@@ -1,5 +1,5 @@
 name: EasyResidenceManager
-version: 1.1.2
+version: 1.2.0
 main: pers.zhangyang.easyresidencemanager.EasyResidenceManager
 api-version: 1.13
 commands:
@@ -8,4 +8,3 @@ commands:
 softdepend:
   - PlaceholderAPI
   - Vault
-  - PlayerPoints

@@ -21,7 +21,7 @@ public class ManageResidencePageResidenceOptionPage extends SingleGuiPageBase im
     private  ResidenceMeta residenceMeta;
     public ManageResidencePageResidenceOptionPage(ResidenceMeta residenceMeta, Player viewer, GuiPage backPage, OfflinePlayer owner) {
 
-        super(GuiYaml.INSTANCE.getString("gui.title.manageResidencePageResidenceOptionPage"), viewer, backPage, owner);
+        super(GuiYaml.INSTANCE.getString("gui.title.manageResidencePageResidenceOptionPage"), viewer, backPage, owner,54);
         this.residenceMeta=residenceMeta;
     }
 
@@ -76,5 +76,10 @@ public class ManageResidencePageResidenceOptionPage extends SingleGuiPageBase im
     @Override
     public void back() {
         backPage.refresh();
+    }
+
+    @Override
+    public int getBackSlot() {
+        return 49;
     }
 }

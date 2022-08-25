@@ -7,3 +7,5 @@ completer:
     - "correctYaml"
     - "openGui"
     - "openMui"
+  easyResidenceManagerOpenMui:
+    - "<玩家名字>"

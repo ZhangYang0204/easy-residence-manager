@@ -35,7 +35,7 @@ import java.util.List;
 
 @EventListener
 public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResidence implements Listener {
-    @GuiDiscreteButtonHandler(guiPage = ManageResidencePageResidenceOptionPage.class, slot = {31})
+    @GuiDiscreteButtonHandler(guiPage = ManageResidencePageResidenceOptionPage.class, slot = {31},refreshGui = true,closeGui = false)
     public void on(InventoryClickEvent event) {
 
 

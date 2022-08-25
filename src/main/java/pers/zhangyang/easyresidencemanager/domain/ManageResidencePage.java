@@ -20,7 +20,7 @@ import java.util.*;
 
 public class ManageResidencePage extends MultipleGuiPageBase implements BackAble {
     public ManageResidencePage( @NotNull Player viewer, @Nullable GuiPage backPage, OfflinePlayer owner) {
-        super(GuiYaml.INSTANCE.getString("gui.title.manageResidencePage"), viewer, backPage, owner);
+        super(GuiYaml.INSTANCE.getString("gui.title.manageResidencePage"), viewer, backPage, owner,54);
     }
 
     private List<ResidenceMeta> residenceMetaList;
@@ -31,6 +31,11 @@ public class ManageResidencePage extends MultipleGuiPageBase implements BackAble
             return;
         }
         CommandUtil.dispatchCommandList(viewer,cmdList);
+    }
+
+    @Override
+    public int getBackSlot() {
+        return 49;
     }
 
     @Override
@@ -109,6 +114,16 @@ public class ManageResidencePage extends MultipleGuiPageBase implements BackAble
         }
 
         viewer.openInventory(this.inventory);
+    }
+
+    @Override
+    public int getPreviousPageSlot() {
+        return 45;
+    }
+
+    @Override
+    public int getNextPageSlot() {
+        return 53;
     }
 
     public List<ResidenceMeta> getResidenceMetaList() {

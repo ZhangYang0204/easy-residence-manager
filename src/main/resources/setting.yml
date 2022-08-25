@@ -9,6 +9,7 @@ setting:
   display: "default"
 
   #每格方块的Vault花费，非负数，如果填错，采用默认值，如果不填代表不开启Vault功能，必须写为小数形式，例如1需要写为1.0
+  # Vault cost per square, non-negative, if you fill in the wrong, using the default value, if not fill in the representative does not open the Vault function, must be written as a decimal form, for example, 1 need to write 1.0
   perBlockCost: 1.0
 
   #哪些世界关闭传送请求，其他世界的玩家无法在下面的黑名单世界创建住宅

@@ -13,7 +13,7 @@ import java.util.List;
 
 @EventListener
 public class PlayerClickManageResidencePageCreateResidence implements Listener {
-    @GuiDiscreteButtonHandler(guiPage = ManageResidencePage.class,slot = {48})
+    @GuiDiscreteButtonHandler(guiPage = ManageResidencePage.class,slot = {48},refreshGui = false,closeGui = true)
     public void on(InventoryClickEvent event){
         Player player= (Player) event.getWhoClicked();
 

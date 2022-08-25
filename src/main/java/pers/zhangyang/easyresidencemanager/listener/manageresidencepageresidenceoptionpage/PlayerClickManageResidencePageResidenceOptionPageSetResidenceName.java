@@ -13,7 +13,7 @@ import pers.zhangyang.easyresidencemanager.service.impl.GuiServiceImpl;
 
 @EventListener
 public class PlayerClickManageResidencePageResidenceOptionPageSetResidenceName implements Listener {
-    @GuiDiscreteButtonHandler(guiPage = ManageResidencePageResidenceOptionPage.class,slot = {23})
+    @GuiDiscreteButtonHandler(guiPage = ManageResidencePageResidenceOptionPage.class,slot = {23},refreshGui = false,closeGui = true)
     public void on(InventoryClickEvent event){
 
 

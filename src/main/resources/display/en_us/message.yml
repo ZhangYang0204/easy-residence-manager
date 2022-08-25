@@ -3,6 +3,7 @@ message:
   #What to enter to cancel the operation, fill in the blank or "" then the default value is used
   input:
     cancel: "cancel"
+    # Below support Papi variables
   chat:
     failureGetLatestVersion:
       - "&c&l Failed to get the latest version of EasyResidenceManager."

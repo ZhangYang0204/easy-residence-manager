@@ -3,6 +3,8 @@ message:
   #输入什么取消操作，填空或者为""则采用默认值
   input:
     cancel: "取消"
+
+    #下面支持Papi变量
   chat:
     failureGetLatestVersion:
       - "&c&l获得EasyResidenceManager最新版本失败。"
