@@ -41,7 +41,6 @@ public class PlayerClickManageResidencePageResidenceOptionPageTeleportResidence 
         if (backPoint==null){
             List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notExistResidence");
             MessageUtil.sendMessageTo(viewer, list);
-            manageBackPointPage.refresh();
             return;
         }
         Player onlineOwner=manageBackPointPage.getOwner().getPlayer();

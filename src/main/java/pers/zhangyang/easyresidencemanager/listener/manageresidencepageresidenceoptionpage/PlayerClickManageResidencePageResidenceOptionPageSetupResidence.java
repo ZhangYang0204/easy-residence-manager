@@ -58,10 +58,7 @@ public class PlayerClickManageResidencePageResidenceOptionPageSetupResidence imp
             List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.duplicateSetupResidence");
             MessageUtil.sendMessageTo(player, list);
             return;
-        }finally {
-            manageTeleportAskPage.refresh();
         }
-
         List<ResidenceBlockMeta> residenceBlockMetaList=lists[0];
         List<ResidenceInventoryContentMeta> residenceInventoryContentMetaList=lists[1];
         List<ResidenceBlockMeta> torL=new ArrayList<>();

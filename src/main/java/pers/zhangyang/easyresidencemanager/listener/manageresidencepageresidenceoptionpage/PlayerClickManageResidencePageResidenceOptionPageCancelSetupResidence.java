@@ -185,8 +185,6 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
             List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSetupResidence");
             MessageUtil.sendMessageTo(player, list);
             return;
-        } finally {
-            manageTeleportAskPage.refresh();
         }
 
 
