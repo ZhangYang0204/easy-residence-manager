@@ -50,22 +50,26 @@ public class ManageResidencePageResidenceOptionPage extends SingleGuiPageBase im
 
 
 
-        if (!residenceMeta.isSetup()) {
-            ItemStack setupResidence = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.setupResidence");
-            this.inventory.setItem(13, setupResidence);
-        }
+            ItemStack setupResidence = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.setupResidence");this.inventory.setItem(13, setupResidence);
 
-        if (residenceMeta.isSetup()) {
+
             ItemStack cancelSetupResidence = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.cancelSetupResidence");
             this.inventory.setItem(31, cancelSetupResidence);
-        }
 
-        ItemStack cancelSetupResidence = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.teleportResidence");
-        this.inventory.setItem(21, cancelSetupResidence);
+
+        ItemStack teleportResidence = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.teleportResidenceLocation");
+        this.inventory.setItem(21, teleportResidence);
+
         ItemStack setResidenceName = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.setResidenceName");
         this.inventory.setItem(23, setResidenceName);
 
 
+        ItemStack setResidenceLocation = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.setResidenceLocation");
+        this.inventory.setItem(30, setResidenceLocation);
+        ItemStack resetResidenceLocation = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.resetResidenceLocation");
+        this.inventory.setItem(32, resetResidenceLocation);
+        ItemStack setResidenceMode = GuiYaml.INSTANCE.getButtonDefault("gui.button.manageResidencePageResidenceOptionPage.setResidenceMode");
+        this.inventory.setItem(40, setResidenceMode);
         viewer.openInventory(this.inventory);
     }
 

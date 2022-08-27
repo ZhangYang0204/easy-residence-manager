@@ -11,8 +11,7 @@ public class EasyResidenceManager extends EasyPlugin {
     public void onOpen() {
 
         BaseService pluginService = (BaseService) new TransactionInvocationHandler(new BaseServiceImpl()).getProxy();
-        pluginService.transform1_2_1();
-
+        pluginService.transform1_3_0();
         // bStats统计信息
         new Metrics(EasyResidenceManager.instance,16118);
     }

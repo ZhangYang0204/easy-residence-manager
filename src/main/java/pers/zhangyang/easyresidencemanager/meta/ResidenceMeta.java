@@ -1,5 +1,7 @@
 package pers.zhangyang.easyresidencemanager.meta;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class ResidenceMeta {
@@ -11,6 +13,9 @@ public class ResidenceMeta {
     private String secondLocation;
     private Double cost;
     private boolean setup;
+
+    private String mode;
+    private String residenceLocation;
     public ResidenceMeta() {
     }
 
@@ -18,14 +23,41 @@ public class ResidenceMeta {
         this.ownerUuid = ownerUuid;
     }
 
-    public ResidenceMeta(String uuid, String name, String ownerUuid, long createTime, String firstLocation, String secondLocation, boolean setup) {
+    public ResidenceMeta(String uuid, String name, String ownerUuid, long createTime, String firstLocation,
+                         String secondLocation, boolean setup,String mode) {
         this.uuid = uuid;
+        this.mode=mode;
         this.name = name;
         this.ownerUuid = ownerUuid;
         this.createTime = createTime;
         this.firstLocation = firstLocation;
         this.secondLocation = secondLocation;
         this.setup = setup;
+    }
+
+    @NotNull
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(@NotNull String mode) {
+        this.mode = mode;
+    }
+
+    public void setFirstLocation(String firstLocation) {
+        this.firstLocation = firstLocation;
+    }
+
+    public void setSecondLocation(String secondLocation) {
+        this.secondLocation = secondLocation;
+    }
+
+    public String getResidenceLocation() {
+        return residenceLocation;
+    }
+
+    public void setResidenceLocation(String residenceLocation) {
+        this.residenceLocation = residenceLocation;
     }
 
     public boolean isSetup() {
@@ -77,11 +109,11 @@ public class ResidenceMeta {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ResidenceMeta that = (ResidenceMeta) o;
-        return createTime == that.createTime && Double.compare(that.cost, cost) == 0 && setup == that.setup && Objects.equals(uuid, that.uuid) && Objects.equals(name, that.name) && Objects.equals(ownerUuid, that.ownerUuid) && Objects.equals(firstLocation, that.firstLocation) && Objects.equals(secondLocation, that.secondLocation);
+        return createTime == that.createTime && setup == that.setup && Objects.equals(uuid, that.uuid) && Objects.equals(name, that.name) && Objects.equals(ownerUuid, that.ownerUuid) && Objects.equals(firstLocation, that.firstLocation) && Objects.equals(secondLocation, that.secondLocation) && Objects.equals(cost, that.cost) && Objects.equals(mode, that.mode) && Objects.equals(residenceLocation, that.residenceLocation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, name, ownerUuid, createTime, firstLocation, secondLocation, cost, setup);
+        return Objects.hash(uuid, name, ownerUuid, createTime, firstLocation, secondLocation, cost, setup, mode, residenceLocation);
     }
 }

@@ -73,6 +73,17 @@ public class GuiServiceImpl implements GuiService {
     }
 
     @Override
+    public void setResidenceLocation(String residenceUuid, @Nullable String location) throws NotExistResidenceException {
+        ResidenceMeta residenceMeta=new ResidenceDao().getByUuid(residenceUuid);
+        if (residenceMeta==null){
+            throw new NotExistResidenceException();
+        }
+        residenceMeta.setResidenceLocation(location);
+        new ResidenceDao().deleteByUuid(residenceMeta.getUuid());
+        new ResidenceDao().insert(residenceMeta);
+    }
+
+    @Override
     public void setResidenceOwner(String ownerUuid,ResidenceMeta residenceMeta0) throws NotExistResidenceException, StateChangeException {
         ResidenceMeta residenceMeta=new ResidenceDao().getByUuid(residenceMeta0.getUuid());
         if (residenceMeta==null){
@@ -92,6 +103,17 @@ public class GuiServiceImpl implements GuiService {
     @Override
     public @Nullable ResidenceMeta getResidenceByUuid(String uuid)   {
         return  new ResidenceDao().getByUuid(uuid);
+    }
+
+    @Override
+    public void setResidenceMode(String residenceUuid, String mode) throws NotExistResidenceException {
+        ResidenceMeta residenceMeta=new ResidenceDao().getByUuid(residenceUuid);
+        if (residenceMeta==null){
+            throw new NotExistResidenceException();
+        }
+        residenceMeta.setMode(mode);
+        new ResidenceDao().deleteByUuid(residenceMeta.getUuid());
+        new ResidenceDao().insert(residenceMeta);
     }
 
     @Override

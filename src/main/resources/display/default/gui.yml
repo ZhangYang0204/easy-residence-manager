@@ -42,6 +42,7 @@ gui:
         lore:
           - "&a&l拥有者：{owner_name}"
           - "&b&l住宅名字：{name}"
+          - "&b&l住宅模式：{mode}"
           - "&c&l住宅花费：{cost}"
           - "&e&l创建时间：{create_time}"
           - "&f&l点我查看详细信息"
@@ -116,6 +117,36 @@ gui:
         customModelData: [ ]
 
     manageResidencePageResidenceOptionPage:
+      setResidenceMode:
+        materialName: "DIAMOND"
+        displayName: "&b&l&n设置住宅模式"
+        lore:
+          - "&a&l点我设置住宅模式"
+          - "&b&l私有模式，住宅禁止主人外玩家做任何操作"
+          - "&c&l保护模式，住宅禁止主人外玩家做除击杀怪物外任何操作"
+          - "&d&l公共模式，住宅无任何保护"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      setResidenceLocation:
+        materialName: "DIAMOND"
+        displayName: "&b&l&n设置住宅坐标点"
+        lore:
+          - "&c&l点我设置住宅坐标点"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      resetResidenceLocation:
+        materialName: "DIAMOND_BLOCK"
+        displayName: "&b&l&n重置住宅坐标点"
+        lore:
+          - "&c&l点我重置住宅坐标点"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
       back:
         materialName: "REDSTONE"
         displayName: "&b&l&n返回"
@@ -152,7 +183,7 @@ gui:
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: []
-      teleportResidence:
+      teleportResidenceLocation:
         materialName: "IRON_INGOT"
         displayName: "&b&l&n传送去住宅"
         lore:

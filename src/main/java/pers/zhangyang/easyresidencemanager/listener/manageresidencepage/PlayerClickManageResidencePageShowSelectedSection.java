@@ -37,7 +37,7 @@ public class PlayerClickManageResidencePageShowSelectedSection implements Listen
             }
 
             try {
-                gamer.showSection();
+                gamer.lookSection();
             } catch (NotSameWorldLocationException e) {
                 List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSameWorldLocationWhenShowSelectedSection");
                 MessageUtil.sendMessageTo(player, list);

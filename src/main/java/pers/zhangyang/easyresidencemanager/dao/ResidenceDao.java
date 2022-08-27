@@ -25,6 +25,8 @@ public class ResidenceDao extends DaoBase {
                     "first_location TEXT," +
                     "second_location TEXT," +
                     "cost DOUBLE," +
+                    "mode TEXT," +
+                    "residence_location TEXT," +
                     "setup BIT " +
                     ")");
 
@@ -38,8 +40,9 @@ public class ResidenceDao extends DaoBase {
         PreparedStatement ps= null;
         try {
             ps = getConnection().prepareStatement("" +
-                    "INSERT INTO residence(uuid,`name`,owner_uuid,create_time,first_location,second_location,cost,setup)" +
-                    "values (?,?,?,?,?,?,?,?)");
+                    "INSERT INTO residence(uuid,`name`,owner_uuid,create_time,first_location,second_location,cost,setup," +
+                    "residence_location,mode)" +
+                    "values (?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1,residenceMeta.getUuid());
             ps.setString(2,residenceMeta.getName());
             ps.setString(3,residenceMeta.getOwnerUuid());
@@ -48,6 +51,8 @@ public class ResidenceDao extends DaoBase {
             ps.setString(6,residenceMeta.getSecondLocation());
             ps.setObject(7,residenceMeta.getCost());
             ps.setBoolean(8,residenceMeta.isSetup());
+            ps.setString(9,residenceMeta.getResidenceLocation());
+            ps.setString(10,residenceMeta.getMode());
             return ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -65,6 +70,7 @@ public class ResidenceDao extends DaoBase {
             throw new RuntimeException(e);
         }
     }
+
     @NotNull
     public List<ResidenceMeta> listByOwnerUuid(String ownerUuid){
         PreparedStatement ps= null;

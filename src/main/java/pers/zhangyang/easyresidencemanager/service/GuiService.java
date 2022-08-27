@@ -12,9 +12,11 @@ public interface GuiService {
      List<ResidenceMeta> listResidence();
     void createResidence(ResidenceMeta residenceMeta) throws DuplicateResidenceException, ConflictResidenceException;
     void deleteResidence(String name) throws NotExistResidenceException, NotSetUpResidenceException;
+    void setResidenceLocation(String residenceUuid,@Nullable String location) throws NotExistResidenceException;
     void setResidenceOwner(String ownerUuid,ResidenceMeta residenceMeta0) throws NotExistResidenceException, StateChangeException;
     @Nullable
     ResidenceMeta getResidenceByUuid(String uuid) ;
+    void setResidenceMode(String residenceUuid,String mode) throws NotExistResidenceException;
 
     void setResidenceName(String residenceUuid,String name) throws NotExistResidenceException, DuplicateResidenceException;
 

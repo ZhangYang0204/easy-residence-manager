@@ -2,7 +2,14 @@ message:
 
   #输入什么取消操作，填空或者为""则采用默认值
   input:
+    #输入什么取消操作，填空或者为""则采用默认值
     cancel: "取消"
+    #私有模式的代称，填空或者为""则采用默认值
+    privateMode: "私有模式"
+    #保护模式的代称，填空或者为""则采用默认值
+    protectedMode: "保护模式"
+    #公共模式的代称，填空或者为""则采用默认值
+    publicMode: "公共模式"
 
     #下面支持Papi变量
   chat:
@@ -17,6 +24,7 @@ message:
       - "&b&l/EasyResidenceManager help       查看帮助"
       - "&b&l/EasyResidenceManager reloadPlugin       重载插件"
       - "&b&l/EasyResidenceManager correctYaml       修正Yaml文件"
+      - "&b&l/EasyResidenceManager correctDatabase       修正Yaml文件"
     notifyVersion:
       - "&b&lEasyResidenceManager的当前版本是 &f{current_version}，&b&l最新版本是 &f{latest_version}。"
     enablePlugin:
@@ -60,7 +68,7 @@ message:
       - "&c&l超出了能创建的领地的最大的X距离"
     beyondZLength:
       - "&c&l超出了能创建的领地的最大的Z距离"
-    tooFast:
+    tooFastWhenTeleportResidenceLocation:
       - "&c&l两次传送太快了"
     beyondResidenceAmount:
       - "&c&l超出了能创建的领地的最大数量"
@@ -74,6 +82,8 @@ message:
       - "&c&l请先设置2个坐标围成的选区"
     showingSelectedSection:
       - "&c&l正在展示选区，请等待展示完毕"
+    unknownResidenceMode:
+      - "&C&l未知的模式类型"
 
     howToCreateResidence:
       - "&b&l输入住宅的名字完成创建，输入 &f取消 &b&l取消"
@@ -83,11 +93,14 @@ message:
       - "&b&l输入玩家的名字完成设置，输入 &f取消 &b&l取消"
     howToSetResidenceName:
       - "&b&l输入名字完成设置，输入 &f取消 &b&l取消"
+    howToSetResidenceMode:
+      - "&b&l输入模式完成设置，输入 &f取消 &b&l取消"
 
-
+    setResidenceMode:
+      - "&B&l设置了领地的模式"
     showSelectedSection:
       - "&B&l展示了选区"
-    teleportResidence:
+    teleportResidenceLocation:
       - "&B&l传送去了住宅"
     reloadPlugin:
       - "&b&l成功重载了插件。"
@@ -107,13 +120,25 @@ message:
       - "&b&l安置了领地"
     cancelSetupResidence:
       - "&b&l取消安置了领地"
+    setResidenceLocation:
+      - "&B&l设置了住宅的坐标"
+    resetResidenceLocation:
+      - "&B&l重置了住宅的坐标"
+    correctDatabase:
+      - "&B&l修正了数据库内容"
 
+    duplicateSetupResidence:
+      - "&c&l重复的安置"
+    NotSetupResidence:
+      - "&c&l未安置"
+    notInResidence:
+      - "&C&l不在住宅中"
+    notPrivateModeResidenceOwner:
+      - "&C&l你不是此私有模式领地的主人，不能这么做"
+    notProtectedModeResidenceOwner:
+      - "&C&l你不是此保护模式领地的主人，不能这么做"
 
     notExistResidence:
       - "&c&l不存在的住宅"
     stateChange:
       - "&c&l状态改变"
-    duplicateSetupResidence:
-      - "&c&l重复的安置"
-    NotSetupResidence:
-      - "&c&l未安置"

@@ -58,7 +58,22 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
 
         Gamer gamer = GamerManager.INSTANCE.getGamer(onlineOwner);
 
-        if (gamer.isShowing()) {
+        if (!onlineOwner.isOp()) {
+            Integer perm = PermUtil.getMinNumberPerm("EasyBack.cancelSetupResidenceInterval.", onlineOwner);
+            if (perm == null) {
+                perm = 0;
+            }
+            if (gamer.getLastCancelSetupResidenceTime() != null && System.currentTimeMillis() - gamer.getLastCancelSetupResidenceTime()
+                    < perm * 1000L) {
+
+                List<String> list = pers.zhangyang.easyresidencemanager.yaml.MessageYaml.INSTANCE
+                        .getStringList("message.chat.tooFastWhenCancelSetupResidence");
+                MessageUtil.sendMessageTo(player, list);
+                return;
+            }
+        }
+        gamer.setLastCancelSetupResidenceTime(System.currentTimeMillis());
+        if (gamer.isLooking()) {
             List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.showingSelectedSection");
             MessageUtil.sendMessageTo(player, list);
             return;
@@ -123,7 +138,7 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
                         blockState.setRawData(new MaterialData(Material.BARRIER).getData());
                         blockState.setData(new MaterialData(Material.BARRIER));
 
-                        blockState.update(true, false);
+                        blockState.update(true, true);
 
                     } else {
                         if (blockState instanceof BlockInventoryHolder) {
@@ -146,7 +161,7 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
                             residenceInventoryContentMetaList.add(residenceInventoryContentMeta);
 
                         }
-                        block.setBlockData(Bukkit.createBlockData(Material.BARRIER));
+                        block.setBlockData(Bukkit.createBlockData(Material.BARRIER),true);
                     }
 
                     ResidenceBlockMeta blockInfo;
@@ -167,15 +182,10 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
             }
 
         }
-        long l2=System.currentTimeMillis();
-        System.out.println((l2-l1));
 
         GuiService guiService = (GuiService) new TransactionInvocationHandler(new GuiServiceImpl()).getProxy();
         try {
-            l1=System.currentTimeMillis();
             guiService.cancelSetupResidence(residenceMeta.getUuid(), residenceBlockMetaList, residenceInventoryContentMetaList);
-            l2=System.currentTimeMillis();
-            System.out.println((l2-l1));
         } catch (NotExistResidenceException e) {
 
             List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notExistResidence");
@@ -188,29 +198,6 @@ public class PlayerClickManageResidencePageResidenceOptionPageCancelSetupResiden
         }
 
 
-
-              /*  for (int x = xFrom; x <= xTo; x++) {
-                    for (int y = yFrom; y <= yTo; y++) {
-                        for (int z = zFrom; z <= zTo; z++) {
-                            Location location=new Location(LocationUtil.deserializeLocation(residenceMeta.getFirstLocation()).getWorld(), x, y, z);
-                            Block block=location.getBlock();
-                            if (block.getType().equals(Material.AIR)){
-                                continue;
-                            }
-
-                            if (VersionUtil.getMinecraftBigVersion() == 1 && VersionUtil.getMinecraftMiddleVersion() < 13) {
-                                BlockState blockState=block.getState();
-                                blockState.setType(Material.BARRIER);
-                                blockState.setRawData(new MaterialData(Material.BARRIER).getData());
-                                blockState.setData(new MaterialData(Material.BARRIER));
-
-                                blockState.update(true,false);
-                            } else {
-                                block.setBlockData(Bukkit.createBlockData(Material.BARRIER));
-                            }
-                        }
-                    }
-                }*/
 
 
         List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.cancelSetupResidence");

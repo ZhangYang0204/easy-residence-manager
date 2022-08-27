@@ -47,6 +47,16 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
         }
         Gamer gamer= GamerManager.INSTANCE.getGamer(onlineOwner);
 
+        if (gamer.getFirstLocation()==null||gamer.getSecondLocation()==null){
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSelectedTwoLocationWhenCreateResidence");
+            MessageUtil.sendMessageTo(player, list);
+            return;
+        }
+        if (LocationUtil.isDifferentWorld(gamer.getFirstLocation(),gamer.getSecondLocation())){
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSameWorldLocationWhenCreateResidence");
+            MessageUtil.sendMessageTo(player, list);
+            return;
+        }
 
         List<String> worldNameBlackList=SettingYaml.INSTANCE.getStringList("setting.worldBlackList");
         World world=gamer.getFirstLocation().getWorld();
@@ -67,16 +77,7 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
             MessageUtil.sendMessageTo(player, list);
             return;
         }
-        if (gamer.getFirstLocation()==null||gamer.getSecondLocation()==null){
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSelectedTwoLocationWhenCreateResidence");
-            MessageUtil.sendMessageTo(player, list);
-            return;
-        }
-        if (LocationUtil.isDifferentWorld(gamer.getFirstLocation(),gamer.getSecondLocation())){
-            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notSameWorldLocationWhenCreateResidence");
-            MessageUtil.sendMessageTo(player, list);
-            return;
-        }
+
 
 
 
@@ -140,7 +141,7 @@ public class PlayerInputAfterClickManageResidencePageCreateResidence extends Fin
         ResidenceMeta residenceMeta=new ResidenceMeta(UuidUtil.getUUID(),
                 ChatColor.translateAlternateColorCodes('&',messages[0]),owner.getUniqueId().toString(),
                 System.currentTimeMillis(), LocationUtil.serializeLocation(gamer.getFirstLocation()),
-                LocationUtil.serializeLocation(gamer.getSecondLocation()),true);
+                LocationUtil.serializeLocation(gamer.getSecondLocation()),true,"私有模式");
         residenceMeta.setCost(cost);
 
 

@@ -1,6 +1,5 @@
 package pers.zhangyang.easyresidencemanager.listener.manageresidencepageresidenceoptionpage;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -12,7 +11,6 @@ import pers.zhangyang.easylibrary.util.PermUtil;
 import pers.zhangyang.easylibrary.util.TransactionInvocationHandler;
 import pers.zhangyang.easyresidencemanager.domain.Gamer;
 import pers.zhangyang.easyresidencemanager.domain.ManageResidencePageResidenceOptionPage;
-import pers.zhangyang.easyresidencemanager.exception.NotExistResidenceException;
 import pers.zhangyang.easyresidencemanager.manager.GamerManager;
 import pers.zhangyang.easyresidencemanager.meta.ResidenceMeta;
 import pers.zhangyang.easyresidencemanager.service.GuiService;
@@ -22,7 +20,7 @@ import pers.zhangyang.easyresidencemanager.yaml.MessageYaml;
 import java.util.List;
 
 @EventListener
-public class PlayerClickManageResidencePageResidenceOptionPageTeleportResidence implements Listener {
+public class PlayerClickManageResidencePageResidenceOptionPageTeleportResidenceLocation implements Listener {
     @GuiDiscreteButtonHandler(guiPage = ManageResidencePageResidenceOptionPage.class,slot = {21},refreshGui = false,closeGui = true)
     public void on(InventoryClickEvent event){
 
@@ -50,25 +48,33 @@ public class PlayerClickManageResidencePageResidenceOptionPageTeleportResidence 
             return;
         }
 
+        Gamer gamer= GamerManager.INSTANCE.getGamer(onlineOwner);
         if (!onlineOwner.isOp()) {
-            Integer perm = PermUtil.getMinNumberPerm("EasyBack.teleportResidenceInterval.", onlineOwner);
+            Integer perm = PermUtil.getMinNumberPerm("EasyBack.teleportResidenceLocationInterval.", onlineOwner);
             if (perm == null) {
                 perm = 0;
             }
-            Gamer gamer= GamerManager.INSTANCE.getGamer(onlineOwner);
             if (gamer.getLastBackTime() != null && System.currentTimeMillis() - gamer.getLastBackTime()
                     < perm * 1000L) {
 
-                List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.tooFast");
+                List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.tooFastWhenTeleportResidenceLocation");
                 MessageUtil.sendMessageTo(viewer, list);
                 return;
             }
         }
 
-        viewer.teleport(LocationUtil.deserializeLocation(backPoint.getFirstLocation()));
+        if (backPoint.getResidenceLocation()==null){
+
+            viewer.teleport(LocationUtil.deserializeLocation(backPoint.getFirstLocation()));
+        }else {
+            viewer.teleport(LocationUtil.deserializeLocation(backPoint.getResidenceLocation()));
+        }
+
+        gamer.setLastBackTime(System.currentTimeMillis());
 
 
-        List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.teleportResidence");
+
+        List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.teleportResidenceLocation");
         MessageUtil.sendMessageTo(viewer, list);
 
     }

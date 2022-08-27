@@ -42,6 +42,7 @@ gui:
         lore:
           - "&a&lowner: {owner_name}"
           - "&b&lResidence name: {name}"
+          - "&b&lResidence mode：{mode}"
           - "&c&lResidence cost: {cost}"
           - "&e&lCreation time: {create_time}"
           - "&f&lClick me for details"
@@ -116,6 +117,36 @@ gui:
         customModelData: [ ]
 
     manageResidencePageResidenceOptionPage:
+      setResidenceMode:
+        materialName: "DIAMOND"
+        displayName: "&b&l&n setResidenceMode"
+        lore:
+          - "&a&lclick me to setResidenceMode"
+          - "&b&lPrivateMode, the residence forbids players outside the owner to do any operation"
+          - "&c&lProtectedMode, the residence forbids players outside the owner to do any operation except killing monsters"
+          - "&d&lPublicMode, the house has no protection"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      setResidenceLocation:
+        materialName: "DIAMOND"
+        displayName: "&b&l&n setResidenceLocation"
+        lore:
+          - "&c&l point I setResidenceLocation"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
+      resetResidenceLocation:
+        materialName: "DIAMOND_BLOCK"
+        displayName: "&b&l&nResetResidenceLocation"
+        lore:
+          - "&c&l dot me resetResidenceLocation"
+        amount: 1
+        itemFlag:
+          - "HIDE_DESTROYS"
+        customModelData: [ ]
       back:
         materialName: "REDSTONE"
         displayName: "&b&l&nReturn"
@@ -152,7 +183,7 @@ gui:
         itemFlag:
           - "HIDE_DESTROYS"
         customModelData: []
-      teleportResidence:
+      teleportResidenceLocation:
         materialName: "IRON_INGOT"
         displayName: "&b&l&n teleport to residence"
         lore:

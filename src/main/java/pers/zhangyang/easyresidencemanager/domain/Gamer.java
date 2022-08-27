@@ -12,7 +12,6 @@ import org.bukkit.inventory.BlockInventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.jetbrains.annotations.Nullable;
 import pers.zhangyang.easylibrary.EasyPlugin;
 import pers.zhangyang.easylibrary.util.VersionUtil;
 import pers.zhangyang.easyresidencemanager.exception.NotSameWorldLocationException;
@@ -28,10 +27,12 @@ public class Gamer {
     private Long lastBackTime;
 
 
+    private Long lastSetupResidenceTime;
+    private Long lastCancelSetupResidenceTime;
     private boolean showing;
 
     //用基岩显示选区，基岩不会被破坏，方便一些
-    public  void showSection() throws NotSameWorldLocationException {
+    public  void lookSection() throws NotSameWorldLocationException {
 
         if (firstLocation.getWorld()==null||secondLocation.getWorld()==null){
             throw new NotSameWorldLocationException();
@@ -87,7 +88,7 @@ public class Gamer {
                     blockState.setType(Material.BEDROCK);
                     blockState.setRawData(new MaterialData(Material.BEDROCK).getData());
                     blockState.setData(new MaterialData(Material.BEDROCK));
-                    blockState.update(true, false);
+                    blockState.update(true, true);
 
 
 
@@ -100,7 +101,7 @@ public class Gamer {
                         ItemStack[] inventoryContent=container.getInventory().getContents();
                         locationInventoryContentMap.put(block.getLocation(),inventoryContent);
                     }
-                    block.setBlockData(Bukkit.createBlockData(Material.BEDROCK));
+                    block.setBlockData(Bukkit.createBlockData(Material.BEDROCK),true);
                 }
 
             }
@@ -152,7 +153,7 @@ public class Gamer {
                         ItemStack[] inventoryContent=container.getInventory().getContents();
                         locationInventoryContentMap.put(block.getLocation(),inventoryContent);
                     }
-                    block.setBlockData(Bukkit.createBlockData(Material.BEDROCK));
+                    block.setBlockData(Bukkit.createBlockData(Material.BEDROCK),true);
                 }
 
             }
@@ -203,7 +204,7 @@ public class Gamer {
                         ItemStack[] inventoryContent=container.getInventory().getContents();
                         locationInventoryContentMap.put(block.getLocation(),inventoryContent);
                     }
-                    block.setBlockData(Bukkit.createBlockData(Material.BEDROCK));
+                    block.setBlockData(Bukkit.createBlockData(Material.BEDROCK),true);
                 }
 
             }
@@ -244,7 +245,23 @@ public class Gamer {
 
     }
 
-    public boolean isShowing() {
+    public Long getLastSetupResidenceTime() {
+        return lastSetupResidenceTime;
+    }
+
+    public void setLastSetupResidenceTime(Long lastSetupResidenceTime) {
+        this.lastSetupResidenceTime = lastSetupResidenceTime;
+    }
+
+    public Long getLastCancelSetupResidenceTime() {
+        return lastCancelSetupResidenceTime;
+    }
+
+    public void setLastCancelSetupResidenceTime(Long lastCancelSetupResidenceTime) {
+        this.lastCancelSetupResidenceTime = lastCancelSetupResidenceTime;
+    }
+
+    public boolean isLooking() {
         return showing;
     }
 

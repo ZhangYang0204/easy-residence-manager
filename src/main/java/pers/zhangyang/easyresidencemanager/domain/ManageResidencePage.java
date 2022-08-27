@@ -11,10 +11,12 @@ import pers.zhangyang.easylibrary.base.BackAble;
 import pers.zhangyang.easylibrary.base.GuiPage;
 import pers.zhangyang.easylibrary.base.MultipleGuiPageBase;
 import pers.zhangyang.easylibrary.util.*;
+import pers.zhangyang.easylibrary.yaml.SettingYaml;
 import pers.zhangyang.easyresidencemanager.meta.ResidenceMeta;
 import pers.zhangyang.easyresidencemanager.service.GuiService;
 import pers.zhangyang.easyresidencemanager.service.impl.GuiServiceImpl;
 import pers.zhangyang.easyresidencemanager.yaml.GuiYaml;
+import pers.zhangyang.easyresidencemanager.yaml.MessageYaml;
 
 import java.util.*;
 
@@ -55,7 +57,7 @@ public class ManageResidencePage extends MultipleGuiPageBase implements BackAble
         this.inventory.clear();
         GuiService guiService= (GuiService) new TransactionInvocationHandler(new GuiServiceImpl()).getProxy();
 
-        List<ResidenceMeta> residenceMetaList=guiService.listResidence();
+        List<ResidenceMeta> residenceMetaList=guiService.listResidence(onlineOwner.getUniqueId().toString());
 
         this.residenceMetaList = PageUtil.page(this.pageIndex,45,residenceMetaList );
 
@@ -70,7 +72,19 @@ public class ManageResidencePage extends MultipleGuiPageBase implements BackAble
            OfflinePlayer offlinePlayer= Bukkit.getOfflinePlayer(UUID.fromString(ask.getOwnerUuid()));
             rep.put("{owner_name}", offlinePlayer.getName()==null?"/":offlinePlayer.getName());
             rep.put("{name}",ask.getName());
-            rep.put("{cost}", String.valueOf(ask.getCost()));
+            rep.put("{cost}", ask.getCost()==null?"/": String.valueOf(ask.getCost()));
+
+            if (ask.getMode().equalsIgnoreCase("私有模式")){
+                rep.put("{mode}", MessageYaml.INSTANCE.getNonemptyStringDefault("message.input.privateMode"));
+            }
+            if (ask.getMode().equalsIgnoreCase("保护模式")){
+                rep.put("{mode}", MessageYaml.INSTANCE.getNonemptyStringDefault("message.input.protectedMode"));
+            }
+            if (ask.getMode().equalsIgnoreCase("公共模式")){
+                rep.put("{mode}", MessageYaml.INSTANCE.getNonemptyStringDefault("message.input.publicMode"));
+            }
+
+
             rep.put("{create_time}", TimeUtil.getTimeFromTimeMill(ask.getCreateTime()));
 
             ReplaceUtil.replaceDisplayName(itemStack,rep);

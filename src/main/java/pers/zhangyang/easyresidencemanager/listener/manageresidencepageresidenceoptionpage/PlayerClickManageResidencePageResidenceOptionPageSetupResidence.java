@@ -18,9 +18,11 @@ import pers.zhangyang.easylibrary.annotation.EventListener;
 import pers.zhangyang.easylibrary.annotation.GuiDiscreteButtonHandler;
 import pers.zhangyang.easylibrary.util.*;
 import pers.zhangyang.easylibrary.yaml.MessageYaml;
+import pers.zhangyang.easyresidencemanager.domain.Gamer;
 import pers.zhangyang.easyresidencemanager.domain.ManageResidencePageResidenceOptionPage;
 import pers.zhangyang.easyresidencemanager.exception.DuplicateSetupResidenceException;
 import pers.zhangyang.easyresidencemanager.exception.NotExistResidenceException;
+import pers.zhangyang.easyresidencemanager.manager.GamerManager;
 import pers.zhangyang.easyresidencemanager.meta.ResidenceBlockMeta;
 import pers.zhangyang.easyresidencemanager.meta.ResidenceInventoryContentMeta;
 import pers.zhangyang.easyresidencemanager.meta.ResidenceMeta;
@@ -59,6 +61,30 @@ public class PlayerClickManageResidencePageResidenceOptionPageSetupResidence imp
             MessageUtil.sendMessageTo(player, list);
             return;
         }
+        Player onlineOwner = manageTeleportAskPage.getOwner().getPlayer();
+        if (onlineOwner == null) {
+            List<String> list = MessageYaml.INSTANCE.getStringList("message.chat.notOnline");
+            MessageUtil.sendMessageTo(player, list);
+            return;
+        }
+
+        Gamer gamer= GamerManager.INSTANCE.getGamer(onlineOwner);
+        if (!onlineOwner.isOp()) {
+            Integer perm = PermUtil.getMinNumberPerm("EasyBack.setupResidenceInterval.", onlineOwner);
+            if (perm == null) {
+                perm = 0;
+            }
+            if (gamer.getLastSetupResidenceTime() != null && System.currentTimeMillis() - gamer.getLastSetupResidenceTime()
+                    < perm * 1000L) {
+
+                List<String> list = pers.zhangyang.easyresidencemanager.yaml.MessageYaml.INSTANCE
+                        .getStringList("message.chat.tooFastWhenSetupResidence");
+                MessageUtil.sendMessageTo(player, list);
+                return;
+            }
+        }
+        gamer.setLastSetupResidenceTime(System.currentTimeMillis());
+
         List<ResidenceBlockMeta> residenceBlockMetaList=lists[0];
         List<ResidenceInventoryContentMeta> residenceInventoryContentMetaList=lists[1];
         List<ResidenceBlockMeta> torL=new ArrayList<>();
@@ -77,9 +103,9 @@ public class PlayerClickManageResidencePageResidenceOptionPageSetupResidence imp
                 blockState.setType(materialData.getItemType());
                 blockState.setRawData(materialData.getData());
                 blockState.setData(materialData);
-                blockState.update(true,false);
+                blockState.update(true,true);
             }else {
-                block.setBlockData(Bukkit.createBlockData(b.getBlock()));
+                block.setBlockData(Bukkit.createBlockData(b.getBlock()),true);
             }
 
         }
@@ -91,7 +117,7 @@ public class PlayerClickManageResidencePageResidenceOptionPageSetupResidence imp
                 BlockState blockState=block.getState();
                 blockState.setType(materialData.getItemType());
                 blockState.setRawData(materialData.getData());
-                blockState.update(true,false);
+                blockState.update(true,true);
             }
         }
         for (ResidenceInventoryContentMeta m: residenceInventoryContentMetaList){

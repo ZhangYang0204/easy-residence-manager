@@ -1,9 +1,14 @@
 message:
 
-  #What to enter to cancel the operation, fill in the blank or "" then the default value is used
-  input:
+   input:
+    # What to enter to cancel the operation, fill in the blank or "" then the default value is used
     cancel: "cancel"
-    # Below support Papi variables
+    #The proxy for private mode, fill in the blank or "" to use the default value
+    privateMode: "privateMode"
+    #Protected mode proxy, fill in the blank or "" to use the default value
+    protectedMode: "protectedMode"
+    #Proxy for public mode, blank or "" is used as default
+    publicMode: "publicMode"
   chat:
     failureGetLatestVersion:
       - "&c&l Failed to get the latest version of EasyResidenceManager."
@@ -16,6 +21,7 @@ message:
       - "&b&l/EasyResidenceManager help View Help"
       - "&b&l/EasyResidenceManager reloadPlugin reload plugin"
       - "&b&l/EasyResidenceManager correctYaml Fix Yaml file"
+      - "&b&l/EasyResidenceManager correctDatabase       Fix database file data"
     notifyVersion:
       - "&b&lThe current version of EasyResidenceManager is &f{current_version}, &b&lthe latest version is &f{latest_version}."
     enablePlugin:
@@ -57,7 +63,7 @@ message:
       - "&c&l exceeds the maximum X distance of the territory that can be created"
     beyondZLength:
       - "&c&l exceeds the maximum Z distance of the territory that can be created"
-    tooFast:
+    tooFastWhenTeleportResidenceLocation:
       - "&c&l teleported too quickly twice"
     beyondResidenceAmount:
       - "&c&l exceeded the maximum number of territories that can be created"
@@ -73,6 +79,8 @@ message:
       - "&c&lPlease set the selection surrounded by 2 coordinates first"
     showingSelectedSection:
       - "&c&l is showing the selection, please wait until it is finished"
+    unknownResidenceMode:
+      - "&C&l unknown pattern type"
 
     howToCreateResidence:
       - "&b&lEnter the name of the residence to complete creation, enter &f to cancel &b&l to cancel"
@@ -82,11 +90,15 @@ message:
       - "&b&lEnter the player's name to complete setting, enter &f Cancel &b&l Cancel"
     howToSetResidenceName:
       - "&b&lEnter name to complete setting, enter &f to cancel &b&l to cancel"
+    howToSetResidenceMode:
+      - "&b&l input mode finished setting, enter &f cancel &b&l cancel"
 
 
+    setResidenceMode:
+      - "&B&l set the pattern of the territory"
     showSelectedSection:
       - "&B&l showSelectedSection"
-    teleportResidence:
+    teleportResidenceLocation:
       - "&B&l teleported to residence"
     reloadPlugin:
       - "&b&l successfully reloaded the plugin."
@@ -106,13 +118,24 @@ message:
       - "&b&l placed the territory"
     cancelSetupResidence:
       - "&b&lCancelledSetupResidence"
+    setResidenceLocation:
+      - "&B&l sets the coordinates of the residence"
+    resetResidenceLocation:
+      - "&B&l reset the coordinates of the residence"
+    correctDatabase:
+      - "&B&lCorrected database data"
+
+    duplicateSetupResidence:
+      - "&c&l Duplicate placement"
+    NotSetupResidence:
+      - "&c&lNotSetup"
+    notInResidence:
+      - "&C&lNot in residence"
+    notPrivateModeResidenceOwner:
+      - "&C&l you are not the owner of a private model territory and cannot do this"
 
 
     notExistResidence:
       - "&c&lNotExistResidence"
     stateChange:
       - "&c&l state change"
-    duplicateSetupResidence:
-      - "&c&l Duplicate placement"
-    NotSetupResidence:
-      - "&c&lNotSetup"
